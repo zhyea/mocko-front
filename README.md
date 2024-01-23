@@ -12,3 +12,6 @@ Mocko前端
 * https://blog.csdn.net/weixin_69553582/article/details/129630880
 
 
+# refer2:
+* https://github.com/chuzhixin/vue-admin-beautiful/
+* https://blog.csdn.net/HeyVIrBbox/article/details/126896677

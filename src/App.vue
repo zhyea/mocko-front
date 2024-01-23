@@ -4,7 +4,6 @@ import LoginPage from './view/LoginPage.vue';
 </script>
 
 <template>
-
   <LoginPage msg="Vite + Vue" />
 </template>
 
