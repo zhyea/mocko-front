@@ -27,3 +27,23 @@ defineProps({
 })
 </script>
 
+<style scoped>
+.common-layout {
+    height: 100vh;
+}
+
+.el-main {
+    background-color: aqua;
+}
+
+.el-aside {
+    background-color: floralwhite;
+}
+
+
+.el-footer {
+    background-color: darkgray;
+}
+</style>
+
+
