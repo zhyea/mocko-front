@@ -8,7 +8,20 @@
                     左侧内容，以动态图为主
                 </el-main>
                 <el-aside>
-                    登录信息输入框
+                    <el-form :inline="true" :model="formInline" class="demo-form-inline">
+                        <el-form-item label="用户名">
+                            <el-input clearable />
+                        </el-form-item>
+                        <el-form-item label="密码">
+                            <el-input clearable />
+                        </el-form-item>
+                        <el-form-item>
+                            <el-button type="primary" @click="onSubmit">提交</el-button>
+                        </el-form-item>
+                        <el-form-item>
+                            <el-button type="primary" >重置</el-button>
+                        </el-form-item>
+                    </el-form>
                 </el-aside>
             </el-container>
             <el-footer>
