@@ -1,13 +1,17 @@
+
+<template>
+  <router-view></router-view>
+
+  <div class="main">
+    <LoginPage />
+  </div>
+</template>
+
+
 <script setup>
-import LoginPage from './view/LoginPage.vue';
 
 </script>
 
-<template>
-  <div class="main">
-    <LoginPage msg="Vite + Vue" />
-  </div>
-</template>
 
 <style scoped>
 .main {

@@ -12,10 +12,10 @@
                     <el-input v-model="form.username" />
                 </el-form-item>
                 <el-form-item label="密码">
-                    <el-input v-model="form.username" type="password" placeholder="请输入密码" show-password />
+                    <el-input v-model="form.password" type="password" placeholder="请输入密码" show-password />
                 </el-form-item>
                 <el-form-item class="login_btns">
-                    <el-button type="primary">登录</el-button>
+                    <el-button type="primary" @click="checkLogin()">登录</el-button>
                     <el-button type="info">重置</el-button>
                 </el-form-item>
             </el-form>
@@ -26,10 +26,33 @@
 
 <script setup>
 import { ref } from 'vue'
+import axios from 'axios';
 
-defineProps({
-    msg: String,
-})
+import { mockoRouter } from 'vue-router';
+const router = mockoRouter()
+
+let form = ref({
+    username: '',
+    password: ''
+});
+
+function checkLogin() {
+    let url = '';
+    axios.post(url, {
+        username: form.value.username,
+        password: form.value.password
+    }).then(response => {
+        console.log(response.data);
+
+        if (response.code == 200) {
+            sessionStorage.setItem("isAuthenticated", true)
+            router.push("/home")
+        }
+    }).catch(error => {
+        console.log(error)
+    });
+}
+
 
 </script>
 
