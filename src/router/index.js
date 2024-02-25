@@ -1,30 +1,28 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 
-//-异步加载组件
-import { defineAsyncComponent } from 'vue'
-
-
 //-路由规则
 const mockoRoutes = [
     {
         path: '/',
-        redirct: '/login'
+        name: 'Home',
+        component: () => import('../App.vue'),
+        redirct: '/login',
     }, {
         path: '/login',
         name: 'LoginPage',
-        component: defineAsyncComponent(() => import('../view/LoginPage.vue'))
+        component: () => import('../view/LoginPage.vue')
     }, {
         path: '/home',
         name: 'HomePage',
-        component: defineAsyncComponent(() => import('../view/HomePage.vue'))
+        component: () => import('../view/HomePage.vue')
     }
 ]
 
 
 //-创建路由对象
 const router = createRouter({
-    history: createWebHistory(),
+    history: createWebHistory(`${import.meta.env.BASE_URL}`),
     routes: mockoRoutes
 })
 
