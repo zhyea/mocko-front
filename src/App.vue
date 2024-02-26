@@ -10,19 +10,13 @@ console.log(import.meta.env);
 
 
 <style scoped>
-.main {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  width: 100%;
+body {
+  margin: 0;
+  padding: 0;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+#app {
+  margin: 0;
+  padding: 0;
 }
 </style>

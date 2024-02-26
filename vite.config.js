@@ -14,10 +14,10 @@ export default defineConfig({
   envPrefix: ['VITE_', 'MOCKO_'],
 
   // server
-  server: {
-    port: 1022,
-    strictPort: true
-  },
+  // server: {
+  //   port: 1022,
+  //   strictPort: true
+  // },
 
   // plugins
   plugins: [

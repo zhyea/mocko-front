@@ -2,19 +2,19 @@
     <div class="login_container">
         <div class="login_box">
             <!-- LOGO -->
-            <div class="logo_box">
-                <img src="../assets/vue.svg" alt="Logo" />
+            <div class="avatar_box">
+                <img src="/assassin.svg" alt="Logo" />
             </div>
 
             <!--表单信息-->
-            <el-form :model="form" label-with="120px" class="login_form">
-                <el-form-item label="用户名">
+            <el-form :model="form" label-with="0" class="login_form">
+                <el-form-item label="">
                     <el-input v-model="form.username" />
                 </el-form-item>
-                <el-form-item label="密码">
+                <el-form-item label="">
                     <el-input v-model="form.password" type="password" placeholder="请输入密码" show-password />
                 </el-form-item>
-                <el-form-item class="login_btns">
+                <el-form-item class="login_btn">
                     <el-button type="primary" @click="_checkLogin()">登录</el-button>
                     <el-button type="info">重置</el-button>
                 </el-form-item>
@@ -30,11 +30,11 @@ import { checkLogin } from '@/utils/api/login'
 import { useRouter } from 'vue-router';
 const router = useRouter()
 
+
 let form = ref({
     username: '',
     password: ''
 });
-
 
 
 function _checkLogin() {
@@ -55,43 +55,60 @@ function _checkLogin() {
 
 </script>
 
-<style scoped>
+<style lang="less" scoped>
 .login_container {
     background-color: #2b4b6b;
-    height: 100vh;
+    width: 90vw;
+    height: 90vh;
 }
 
 .login_box {
+    // 宽450像素
     width: 450px;
+    // 高300像素
     height: 300px;
+    // 背景颜色
     background-color: #fff;
+    // 圆角边框3像素
     border-radius: 3px;
+    // 绝对定位
     position: absolute;
+    // 距离左则50%
     left: 50%;
+    // 上面距离50%
     top: 50%;
+    // 进行位移，并且在横轴上位移-50%，纵轴也位移-50%
     transform: translate(-50%, -50%);
-}
 
+    .avatar_box {
+        // 盒子高度130像素
+        height: 130px;
+        // 宽度130像素
+        width: 130px;
+        // 边框线1像素 实线
+        border: 1px solid #eee;
+        // 圆角
+        border-radius: 50%;
+        // 内padding
+        padding: 10px;
+        // 添加阴影 向外扩散10像素 颜色ddd
+        box-shadow: 0 0 10px #ddd;
+        // 绝对定位
+        position: absolute;
+        // 距离左则
+        left: 50%;
+        // 位移
+        transform: translate(-50%, -50%);
+        // 背景
+        background-color: #fff;
 
-.login_box .avatar_box {
-    height: 130px;
-    width: 130px;
-    border: 1px solid #eee;
-    border-radius: 50%;
-    padding: 10px;
-    box-shadow: 0 0 10px #ddd;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #fff;
-}
-
-
-.login_box .avatar_box img {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    background-color: #eee;
+        img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-color: #eee;
+        }
+    }
 }
 
 .login_form {
@@ -102,22 +119,11 @@ function _checkLogin() {
     box-sizing: border-box;
 }
 
-
-.common-layout {
-    height: 100vh;
-}
-
-.el-main {
-    background-color: aqua;
-}
-
-.el-aside {
-    background-color: floralwhite;
-}
-
-
-.el-footer {
-    background-color: darkgray;
+.login_btn {
+    // 设置弹性布局
+    display: flex;
+    // 横轴上尾部对齐
+    justify-content: flex-end;
 }
 </style>
 
