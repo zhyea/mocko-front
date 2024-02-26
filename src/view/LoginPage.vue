@@ -27,7 +27,8 @@
 <script setup>
 import { ref } from 'vue'
 import { checkLogin } from '@/utils/api/login'
-
+import { useRouter } from 'vue-router';
+const router = useRouter()
 
 let form = ref({
     username: '',
@@ -42,7 +43,7 @@ function _checkLogin() {
         .then(response => {
             console.log(response.data);
 
-            if (response.code == 200) {
+            if (response.data) {
                 sessionStorage.setItem("isAuthenticated", true)
                 router.push("/home")
             }
@@ -69,26 +70,28 @@ function _checkLogin() {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+}
 
-    .avatar_box {
-        height: 130px;
-        width: 130px;
-        border: 1px solid #eee;
-        border-radius: 50%;
-        padding: 10px;
-        box-shadow: 0 0 10px #ddd;
-        position: absolute;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: #fff;
 
-        img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background-color: #eee;
-        }
-    }
+.login_box .avatar_box {
+    height: 130px;
+    width: 130px;
+    border: 1px solid #eee;
+    border-radius: 50%;
+    padding: 10px;
+    box-shadow: 0 0 10px #ddd;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+}
+
+
+.login_box .avatar_box img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: #eee;
 }
 
 .login_form {
