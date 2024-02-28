@@ -1,45 +1,54 @@
-import { defineConfig } from 'vite'
+import {defineConfig} from 'vite'
 import vue from '@vitejs/plugin-vue'
-import { resolve } from "path"
+import {resolve} from "path"
 
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
-import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import {ElementPlusResolver} from 'unplugin-vue-components/resolvers'
+import Icons from 'unplugin-icons/vite'
+import IconsResolver from 'unplugin-icons/resolver'
 
 
 export default defineConfig({
 
-  // config
-  envDir: './env',
-  envPrefix: ['VITE_', 'MOCKO_'],
+	envDir: './env',
+	envPrefix: ['VITE_', 'MOCKO_'],
 
-  // server
-  // server: {
-  //   port: 1022,
-  //   strictPort: true
-  // },
+	// plugins
+	plugins: [
+		vue(),
+		AutoImport({
+			resolvers: [ElementPlusResolver(),
+				// 自动导入图标组件
+				IconsResolver({
+					prefix: 'Icon',
+				})],
+		}),
+		Components({
+			resolvers: [ElementPlusResolver(),
+				// 自动导入图标组件
+				IconsResolver({
+					prefix: 'Icon',
+					// @iconify-json/ep 是 Element Plus 的图标库
+					enabledCollections: ['ep'],
+				})],
+		}),
 
-  // plugins
-  plugins: [
-    vue(),
-    AutoImport({
-      resolvers: [ElementPlusResolver()],
-    }),
-    Components({
-      resolvers: [ElementPlusResolver()],
-    }),
-  ],
+		Icons({
+			autoInstall: true,
+		}),
+	],
 
-  // custom
-  define: {
-    'import.meta.env.CUSTOM': '11111',
-  },
+	// custom
+	define: {
+		'import.meta.env.CUSTOM': '11111',
+	},
 
-  
-  resolve: {
-    // 配置路径别名
-    alias: {
-      '@': resolve(__dirname, './src'),
-    },
-  },
+
+	resolve: {
+		// 配置路径别名
+		alias: {
+			'@': resolve(__dirname, './src'),
+		},
+	},
 })

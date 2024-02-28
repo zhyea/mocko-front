@@ -9,14 +9,25 @@
 			<!--表单信息-->
 			<el-form :model="form" label-with="0" class="login_form">
 				<el-form-item label="">
-					<el-input v-model="form.username"/>
+					<el-input v-model="form.username"
+					          placeholder="用户名"
+					          :prefix-icon="User"
+					/>
 				</el-form-item>
 				<el-form-item label="">
-					<el-input v-model="form.password" type="password" placeholder="请输入密码" show-password/>
+					<el-input v-model="form.password"
+					          type="password"
+					          placeholder="密码"
+					          :prefix-icon="Lock"
+					          show-password/>
 				</el-form-item>
 				<el-form-item class="login_btn">
 					<el-button type="primary" @click="_checkLogin()">登录</el-button>
 					<el-button type="info">重置</el-button>
+
+					<el-icon>
+						<Plus/>
+					</el-icon>
 				</el-form-item>
 			</el-form>
 		</div>
@@ -28,6 +39,7 @@
 import {ref} from 'vue'
 import {checkLogin} from '@/utils/api/login'
 import {useRouter} from 'vue-router';
+import {Lock, User} from "@element-plus/icons-vue";
 
 const router = useRouter()
 
@@ -42,10 +54,8 @@ function _checkLogin() {
 
 	checkLogin(form.value)
 		.then(response => {
-			console.log(response.data);
-
 			if (response.data) {
-				sessionStorage.setItem("isAuthenticated", true)
+				sessionStorage.setItem("isAuthenticated", "true")
 				router.push("/home")
 			}
 		}).catch(error => {
@@ -57,15 +67,6 @@ function _checkLogin() {
 </script>
 
 <style lang="less" scoped>
-#app {
-	background-color: #2b4b6b;
-}
-
-.login_container {
-	width: 80vw;
-	height: 90vh;
-	background-color: #2b4b6b;
-}
 
 .login_box {
 	// 宽450像素
