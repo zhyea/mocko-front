@@ -8,26 +8,26 @@
 
 			<!--表单信息-->
 			<el-form :model="form" label-with="0" class="login_form">
+
 				<el-form-item label="">
-					<el-input v-model="form.username"
+					<el-input :prefix-icon="User"
 					          placeholder="用户名"
-					          :prefix-icon="User"
+					          v-model="form.username"
 					/>
 				</el-form-item>
+
 				<el-form-item label="">
-					<el-input v-model="form.password"
-					          type="password"
-					          placeholder="密码"
+					<el-input type="password"
 					          :prefix-icon="Lock"
-					          show-password/>
+					          placeholder="密码"
+					          v-model="form.password"
+					          show-password
+					/>
 				</el-form-item>
+
 				<el-form-item class="login_btn">
 					<el-button type="primary" @click="_checkLogin()">登录</el-button>
 					<el-button type="info">重置</el-button>
-
-					<el-icon>
-						<Plus/>
-					</el-icon>
 				</el-form-item>
 			</el-form>
 		</div>
@@ -67,12 +67,11 @@ function _checkLogin() {
 </script>
 
 <style lang="less" scoped>
-
 .login_box {
 	// 宽450像素
-	width: 450px;
+	width: 320px;
 	// 高300像素
-	height: 300px;
+	height: 280px;
 	// 背景颜色
 	background-color: #fff;
 	// 圆角边框3像素
@@ -88,9 +87,9 @@ function _checkLogin() {
 
 	.avatar_box {
 		// 盒子高度130像素
-		height: 90px;
+		height: 80px;
 		// 宽度130像素
-		width: 90px;
+		width: 80px;
 		// 边框线1像素 实线
 		border: 1px solid #eee;
 		// 圆角
@@ -123,6 +122,7 @@ function _checkLogin() {
 	width: 100%;
 	padding: 0 20px;
 	box-sizing: border-box;
+	font-size: 600px
 }
 
 .login_btn {

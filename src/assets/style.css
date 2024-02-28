@@ -59,6 +59,10 @@ button:focus-visible {
   padding: 2em;
 }
 
+.el-input {
+  font-size: 6px;
+}
+
 #app {
   max-width: 1280px;
   margin: 0 auto;

@@ -1,6 +1,5 @@
 import {defineConfig} from 'vite'
 import vue from '@vitejs/plugin-vue'
-import {resolve} from "path"
 
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
@@ -18,20 +17,23 @@ export default defineConfig({
 	plugins: [
 		vue(),
 		AutoImport({
-			resolvers: [ElementPlusResolver(),
+			resolvers: [
+				ElementPlusResolver(),
 				// 自动导入图标组件
-				IconsResolver({
-					prefix: 'Icon',
-				})],
+				IconsResolver({})
+			],
 		}),
+
 		Components({
-			resolvers: [ElementPlusResolver(),
+			resolvers: [
+				ElementPlusResolver(),
 				// 自动导入图标组件
 				IconsResolver({
-					prefix: 'Icon',
+					prefix: '',
 					// @iconify-json/ep 是 Element Plus 的图标库
 					enabledCollections: ['ep'],
-				})],
+				})
+			],
 		}),
 
 		Icons({
