@@ -1,6 +1,5 @@
-
 <template>
-  <router-view></router-view>
+	<router-view></router-view>
 </template>
 
 
@@ -10,13 +9,4 @@ console.log(import.meta.env);
 
 
 <style scoped>
-body {
-  margin: 0;
-  padding: 0;
-}
-
-#app {
-  margin: 0;
-  padding: 0;
-}
 </style>
