@@ -33,14 +33,14 @@ router.beforeEach((to, from, next) => {
     //判断是否已登录 查sessionStorage中是否有isAuthenticated信息
     let isAuthenticated = sessionStorage.getItem("isAuthenticated")
     //判断路由的别名不是登录且未进行登录认证，就跳转去登录
-    if (to.name != "LoginPage" && !isAuthenticated) {
-        next({ name: "LoginPage" })
-    } else if (to.name == "LoginPage" && isAuthenticated) {
-        // 已登录，不允许退回到登录页面
-        next({ name: "HomePage" })
-    } else {
+    // if (to.name != "LoginPage" && !isAuthenticated) {
+    //     next({ name: "LoginPage" })
+    // } else if (to.name == "LoginPage" && isAuthenticated) {
+    //     // 已登录，不允许退回到登录页面
+    //     next({ name: "HomePage" })
+    // } else {
         next()
-    }
+    // }
 })
 
 

@@ -1,21 +1,19 @@
 <template>
-	<div class="common-layout">
+	<el-container class="main">
+		<el-header>Header</el-header>
 		<el-container>
-			<el-header>Header</el-header>
-			<el-container>
-				<el-aside>
-					登录信息输入框
-				</el-aside>
-				<el-main>
-					<el-button>我是 ElButton</el-button>
-					左侧内容，以动态图为主
-				</el-main>
-			</el-container>
-			<el-footer>
-				Copyright等信息
-			</el-footer>
+			<el-aside>
+				登录信息输入框
+			</el-aside>
+			<el-main>
+				<el-button>我是 ElButton</el-button>
+				左侧内容，以动态图为主
+			</el-main>
 		</el-container>
-	</div>
+		<el-footer>
+			Copyright等信息
+		</el-footer>
+	</el-container>
 </template>
 
 
