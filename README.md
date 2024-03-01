@@ -24,4 +24,4 @@ Mocko前端
 
 * https://blog.csdn.net/weixin_41484992/article/details/121576151
 * https://github.com/wurencaideli/dumogu-admin
-* https://www.jb51.net/article/272608.htm
+* https://github.com/geshanzsq/geshanzsq-nav
