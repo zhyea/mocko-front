@@ -7,26 +7,30 @@
 			</div>
 
 			<!--表单信息-->
-			<el-form :model="form" label-with="0" class="login_form">
+			<el-form status-icon
+			         :model="form"
+			         ref="formRef"
+			         :rules="loginFormRules" label-with="0" class="login_form">
 
-				<el-form-item label="">
+				<el-form-item label="" prop="username">
 					<el-input :prefix-icon="User"
 					          placeholder="用户名"
 					          v-model="form.username"
 					/>
 				</el-form-item>
 
-				<el-form-item label="">
+				<el-form-item label="" prop="password">
 					<el-input type="password"
 					          :prefix-icon="Lock"
 					          placeholder="密码"
 					          v-model="form.password"
+					          autocomplete="off"
 					          show-password
 					/>
 				</el-form-item>
 
 				<el-form-item class="login_btn">
-					<el-button type="primary" @click="_checkLogin()">登录</el-button>
+					<el-button type="primary" @click="submitLogin()">登录</el-button>
 					<el-button type="info">重置</el-button>
 				</el-form-item>
 			</el-form>
@@ -37,32 +41,50 @@
 
 <script setup>
 import {ref} from 'vue'
-import {checkLogin} from '@/utils/api/login'
-import {useRouter} from 'vue-router';
-import {Lock, User} from "@element-plus/icons-vue";
+import {useRouter} from 'vue-router'
+import {Lock, User} from "@element-plus/icons-vue"
+import {useAuthStore} from '@/store/auth'
+
 
 const router = useRouter()
+const authStore = useAuthStore()
 
 
-let form = ref({
+const form = ref({
 	username: '',
 	password: ''
 });
 
+const formRef = ref(null)
 
-function _checkLogin() {
+function submitLogin() {
 
-	checkLogin(form.value)
-		.then(response => {
-			if (response.data) {
-				sessionStorage.setItem("isAuthenticated", "true")
-				router.push("/home")
+	formRef.value.validate(
+		(valid) => {
+			console.log(valid)
+			if(valid){
+				const formData = {...form.value}
+				authStore.loginHandle(formData)
+					.then(()=>{
+						router.push({
+							name: 'Home'
+						})
+					})
 			}
-		}).catch(error => {
-		console.log(error)
-	});
+		}
+	)
+
 }
 
+
+const loginFormRules = {
+	username: [{
+		required: true, trigger: 'blur', message: '用户名不可为空'
+	}],
+	password: [{
+		required: true, trigger: 'blur', message: '密码不可为空'
+	}]
+}
 
 </script>
 
