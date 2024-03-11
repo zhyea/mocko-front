@@ -1,10 +1,16 @@
 <template>
 	<div class="login_container">
 		<div class="login_box">
-			<!-- LOGO -->
+
+			<!-- avatar -->
 			<div class="avatar_box">
 				<img src="/favicon.svg" alt="Logo"/>
 			</div>
+
+			<!-- title -->
+			<h2 class="title_info">
+				MOCKO
+			</h2>
 
 			<!--表单信息-->
 			<el-form status-icon
@@ -40,7 +46,7 @@
 
 
 <script setup>
-import {onMounted, ref} from 'vue'
+import {ref} from 'vue'
 import {useRouter} from 'vue-router'
 import {Lock, User} from "@element-plus/icons-vue"
 import {useAuthStore} from '@/store/auth'
@@ -93,7 +99,7 @@ const loginFormRules = {
 	// 宽450像素
 	width: 360px;
 	// 高300像素
-	height: 300px;
+	height: 320px;
 	// 背景颜色
 	background-color: #fff;
 	// 圆角边框3像素
@@ -136,6 +142,14 @@ const loginFormRules = {
 			background-color: #eee;
 		}
 	}
+
+
+	.title_info {
+		margin: 0;
+		padding: 60px 0 0 0;
+		font-family: 'Monospaced Number';
+	}
+
 }
 
 .login_form {
