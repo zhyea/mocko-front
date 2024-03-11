@@ -8,9 +8,7 @@
 			</div>
 
 			<!-- title -->
-			<h2 class="title_info">
-				MOCKO
-			</h2>
+			<h2 class="title_info">MOCKO</h2>
 
 			<!--表单信息-->
 			<el-form status-icon
@@ -72,6 +70,7 @@ function submitLogin() {
 				const formData = {...form.value}
 				authStore.loginHandle(formData)
 					.then(() => {
+						console.log(formData)
 						router.push({
 							name: 'Home'
 						})
@@ -97,9 +96,9 @@ const loginFormRules = {
 <style lang="less" scoped>
 .login_box {
 	// 宽450像素
-	width: 360px;
+	width: 390px;
 	// 高300像素
-	height: 320px;
+	height: 310px;
 	// 背景颜色
 	background-color: #fff;
 	// 圆角边框3像素
@@ -115,9 +114,9 @@ const loginFormRules = {
 
 	.avatar_box {
 		// 盒子高度130像素
-		height: 80px;
+		height: 90px;
 		// 宽度130像素
-		width: 80px;
+		width: 90px;
 		// 边框线1像素 实线
 		border: 1px solid #eee;
 		// 圆角
@@ -146,8 +145,9 @@ const loginFormRules = {
 
 	.title_info {
 		margin: 0;
-		padding: 60px 0 0 0;
-		font-family: 'Monospaced Number';
+		padding: 75px 0 0 0;
+		font-family: 'Monospaced', 'serif';
+		letter-spacing: 0.3em;
 	}
 
 }
