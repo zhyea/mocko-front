@@ -40,7 +40,7 @@
 
 
 <script setup>
-import {ref} from 'vue'
+import {onMounted, ref} from 'vue'
 import {useRouter} from 'vue-router'
 import {Lock, User} from "@element-plus/icons-vue"
 import {useAuthStore} from '@/store/auth'
@@ -62,10 +62,10 @@ function submitLogin() {
 	formRef.value.validate(
 		(valid) => {
 			console.log(valid)
-			if(valid){
+			if (valid) {
 				const formData = {...form.value}
 				authStore.loginHandle(formData)
-					.then(()=>{
+					.then(() => {
 						router.push({
 							name: 'Home'
 						})
@@ -91,9 +91,9 @@ const loginFormRules = {
 <style lang="less" scoped>
 .login_box {
 	// 宽450像素
-	width: 320px;
+	width: 360px;
 	// 高300像素
-	height: 280px;
+	height: 300px;
 	// 背景颜色
 	background-color: #fff;
 	// 圆角边框3像素
