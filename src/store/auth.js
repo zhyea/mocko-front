@@ -11,7 +11,6 @@ export const useAuthStore = defineStore('auth', {
 	actions: {
 
 		setTokenHandle(token) {
-			console.log(token)
 			this.token = token
 			setToken(this.token)
 		},
@@ -22,9 +21,9 @@ export const useAuthStore = defineStore('auth', {
 				return doLogin(data)
 					.then(
 						response => {
-							console.log(response)
 							const token = response.data
 							this.setTokenHandle(token)
+							resolve()
 						}
 					)
 					.catch(

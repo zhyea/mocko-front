@@ -65,14 +65,13 @@ function submitLogin() {
 
 	formRef.value.validate(
 		(valid) => {
-			console.log(valid)
 			if (valid) {
 				const formData = {...form.value}
 				authStore.loginHandle(formData)
 					.then(() => {
-						console.log(formData)
+						console.log(11111111)
 						router.push({
-							name: 'Home'
+							name: 'Dashboard'
 						})
 					})
 			}
