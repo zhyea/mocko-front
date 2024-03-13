@@ -1,20 +1,20 @@
 <template>
-	<div class="login_container">
-		<div class="login_box">
+	<div class="login-container">
+		<div class="login-box">
 
 			<!-- avatar -->
-			<div class="avatar_box">
+			<div class="avatar-box">
 				<img src="/favicon.svg" alt="Logo"/>
 			</div>
 
 			<!-- title -->
-			<h2 class="title_info">MOCKO</h2>
+			<h2 class="title-info">MOCKO</h2>
 
 			<!--表单信息-->
 			<el-form status-icon
 			         :model="form"
 			         ref="formRef"
-			         :rules="loginFormRules" label-with="0" class="login_form">
+			         :rules="loginFormRules" label-with="0" class="login-form">
 
 				<el-form-item label="" prop="username">
 					<el-input :prefix-icon="User"
@@ -33,7 +33,7 @@
 					/>
 				</el-form-item>
 
-				<el-form-item class="login_btn">
+				<el-form-item class="login-btn">
 					<el-button type="primary" @click="submitLogin()">登录</el-button>
 					<el-button type="info">重置</el-button>
 				</el-form-item>
@@ -69,7 +69,6 @@ function submitLogin() {
 				const formData = {...form.value}
 				authStore.loginHandle(formData)
 					.then(() => {
-						console.log(11111111)
 						router.push({
 							name: 'Dashboard'
 						})
@@ -93,7 +92,7 @@ const loginFormRules = {
 </script>
 
 <style lang="less" scoped>
-.login_box {
+.login-box {
 	// 宽450像素
 	width: 390px;
 	// 高300像素
@@ -111,7 +110,7 @@ const loginFormRules = {
 	// 进行位移，并且在横轴上位移-50%，纵轴也位移-50%
 	transform: translate(-50%, -50%);
 
-	.avatar_box {
+	.avatar-box {
 		// 盒子高度130像素
 		height: 90px;
 		// 宽度130像素
@@ -142,7 +141,7 @@ const loginFormRules = {
 	}
 
 
-	.title_info {
+	.title-info {
 		margin: 0;
 		padding: 75px 0 0 0;
 		font-family: 'Monospaced', 'serif';
@@ -151,7 +150,7 @@ const loginFormRules = {
 
 }
 
-.login_form {
+.login-form {
 	position: absolute;
 	bottom: 0;
 	width: 100%;
@@ -160,7 +159,7 @@ const loginFormRules = {
 	font-size: 600px
 }
 
-.login_btn {
+.login-btn {
 	// 设置弹性布局
 	display: flex;
 	// 横轴上尾部对齐

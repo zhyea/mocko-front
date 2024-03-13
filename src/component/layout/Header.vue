@@ -1,0 +1,110 @@
+<template>
+	<el-header>
+		<el-row>
+
+			<!-- sidebar switch-->
+			<el-col :span="1" class="open-menu">
+				<el-icon @click="sidebarSwitch">
+					<expand v-if="collapsed"/>
+					<fold v-if="!collapsed"/>
+				</el-icon>
+			</el-col>
+
+			<!-- breadcrumb -->
+			<el-col :span="15">
+				<el-breadcrumb separator="/">
+					<el-breadcrumb-item
+						v-for="item in breadcrumb"
+						:to="{path: item.path}"
+						:key="item.path"
+					>
+						{{ item.title }}
+					</el-breadcrumb-item>
+				</el-breadcrumb>
+			</el-col>
+
+			<!-- avatar -->
+			<el-col :span="8" class="header-avatar">
+				<span class="el-dropdown">
+					<el-icon><avatar/></el-icon>
+					<el-icon class="el-icon--right">
+						<arrow-down/>
+					</el-icon>
+				</span>
+
+				<template #dropdown>
+					<el-dropdown-menu>
+						<el-dropdown-item @click="openChangePasswordPage">修改密码</el-dropdown-item>
+						<el-dropdown-item @click="logout">退出登录</el-dropdown-item>
+					</el-dropdown-menu>
+				</template>
+			</el-col>
+
+		</el-row>
+	</el-header>
+</template>
+
+
+<script setup>
+
+import {ArrowDown, Avatar, Expand, Fold} from "@element-plus/icons-vue";
+import {useRouter} from 'vue-router'
+import {useAuthStore} from "@/store/auth.js";
+import {useBreadcrumbStore} from "@/store/breadcrumb.js";
+
+const props = defineProps({
+	collapsed: Boolean,
+})
+
+
+const router = useRouter()
+const emit = defineEmits(['onSwitchSidebar'])
+const authStore = useAuthStore()
+const breadcrumbStore = useBreadcrumbStore()
+
+
+const breadcrumb = computed(() => breadcrumbStore.breadcrumb);
+
+
+/**
+ * 侧边栏开关
+ */
+function sidebarSwitch() {
+	emit('onSwitchSidebar', !props.collapsed)
+}
+
+
+/**
+ * 打开更改密码页
+ */
+function openChangePasswordPage() {
+	router.push({
+		name: 'ChangePasswordPage'
+	})
+}
+
+
+/**
+ * 退出登录
+ */
+function logout() {
+	authStore.logoutHandle()
+		.then(() => {
+			router.push({
+				name: 'Login'
+			})
+		})
+}
+</script>
+
+
+<style lang="less" scoped>
+.open-menu {
+	cursor: pointer;
+}
+
+.header-avatar {
+	text-align: right;
+}
+
+</style>
