@@ -16,6 +16,8 @@
 </template>
 
 <script setup>
+import {ref} from 'vue'
+
 import sidebar from '@/component/layout/Sidebar.vue'
 import header from '@/component/layout/Header.vue'
 

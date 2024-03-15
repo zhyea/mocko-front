@@ -70,7 +70,7 @@ function submitLogin() {
 				authStore.loginHandle(formData)
 					.then(() => {
 						router.push({
-							name: 'Dashboard'
+							name: 'Home'
 						})
 					})
 			}
