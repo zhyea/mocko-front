@@ -19,5 +19,7 @@ const back = () => {
 
 
 <style scoped lang="less">
-
+.el-result{
+	background-color: #FFFFFF;
+}
 </style>
