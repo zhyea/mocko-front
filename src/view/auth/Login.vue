@@ -144,6 +144,7 @@ const loginFormRules = {
 	.title-info {
 		margin: 0;
 		padding: 75px 0 0 0;
+		text-align: center;
 		font-family: 'Monospaced', 'serif';
 		letter-spacing: 0.3em;
 	}
