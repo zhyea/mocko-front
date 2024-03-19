@@ -1,7 +1,6 @@
 <template>
 	<el-header>
 		<el-row>
-
 			<!-- sidebar switch-->
 			<el-col :span="1" class="open-menu">
 				<el-icon @click="sidebarSwitch">
@@ -47,6 +46,7 @@
 
 <script setup>
 
+import {computed} from 'vue'
 import {ArrowDown, Avatar, Expand, Fold} from "@element-plus/icons-vue";
 import {useRouter} from 'vue-router'
 import {useAuthStore} from "@/store/auth.js";
@@ -58,7 +58,7 @@ const props = defineProps({
 
 
 const router = useRouter()
-const emit = defineEmits(['onSwitchSidebar'])
+const emit = defineEmits(['menu'])
 const authStore = useAuthStore()
 const breadcrumbStore = useBreadcrumbStore()
 
@@ -70,7 +70,7 @@ const breadcrumb = computed(() => breadcrumbStore.breadcrumb);
  * 侧边栏开关
  */
 function sidebarSwitch() {
-	emit('onSwitchSidebar', !props.collapsed)
+	emit('menu', !props.collapsed)
 }
 
 
@@ -99,6 +99,18 @@ function logout() {
 
 
 <style lang="less" scoped>
+.el-header {
+	border-bottom: 1px solid #e6e6e6;
+	background-color: #FFFFFF;
+	height: 60px;
+	line-height: 60px;
+}
+
+.el-button {
+	border: none;
+}
+
+
 .open-menu {
 	cursor: pointer;
 }
@@ -107,4 +119,11 @@ function logout() {
 	text-align: right;
 }
 
+.el-breadcrumb {
+	line-height: 60px;
+}
+
+a {
+	text-decoration: none;
+}
 </style>
