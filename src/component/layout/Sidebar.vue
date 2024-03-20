@@ -39,6 +39,7 @@ const props = defineProps({
 	height: 100%;
 	background: #263238;
 	border-right: 1px solid #e6e6e6;
+	min-height: 360px;
 }
 
 .logo-box {

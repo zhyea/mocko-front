@@ -3,7 +3,7 @@
 		<sidebar :collapsed="isCollapsed"/>
 
 		<el-container direction="vertical">
-			<mo-header :collapsed="isCollapsed" @menu="changeMenuStatus"/>
+			<main-header :collapsed="isCollapsed" @menu="changeMenuStatus"/>
 			<el-main>
 				<router-view v-slot="{Component}">
 					<el-scrollbar height="100%">
@@ -19,7 +19,7 @@
 import {ref} from 'vue'
 
 import Sidebar from '@/component/layout/Sidebar.vue'
-import MoHeader from '@/component/layout/Header.vue'
+import MainHeader from '@/component/layout/MainHeader.vue'
 
 
 let isCollapsed = ref(false)
@@ -38,5 +38,6 @@ function changeMenuStatus(status) {
 
 .el-main {
 	padding: 0;
+	height: 100%;
 }
 </style>

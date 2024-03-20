@@ -24,6 +24,7 @@
 
 			<!-- avatar -->
 			<el-col :span="8" class="header-avatar">
+				<el-dropdown>
 				<span class="el-dropdown">
 					<el-icon><avatar/></el-icon>
 					<el-icon class="el-icon--right">
@@ -31,12 +32,13 @@
 					</el-icon>
 				</span>
 
-				<template #dropdown>
-					<el-dropdown-menu>
-						<el-dropdown-item @click="openChangePasswordPage">修改密码</el-dropdown-item>
-						<el-dropdown-item @click="logout">退出登录</el-dropdown-item>
-					</el-dropdown-menu>
-				</template>
+					<template #dropdown>
+						<el-dropdown-menu>
+							<el-dropdown-item @click="openChangePasswordPage">修改密码</el-dropdown-item>
+							<el-dropdown-item @click="logout">退出登录</el-dropdown-item>
+						</el-dropdown-menu>
+					</template>
+				</el-dropdown>
 			</el-col>
 
 		</el-row>
@@ -103,6 +105,10 @@ function logout() {
 	border-bottom: 1px solid #e6e6e6;
 	background-color: #FFFFFF;
 	height: 60px;
+	line-height: 60px;
+}
+
+.el-dropdown {
 	line-height: 60px;
 }
 
