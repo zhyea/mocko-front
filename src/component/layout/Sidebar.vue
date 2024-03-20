@@ -1,5 +1,5 @@
 <template>
-	<el-aside :width="collapsed ? '65px' : '250px'">
+	<el-aside :width="collapsed ? '72px' : '250px'">
 		<div class="sidebar-box">
 			<div class="logo-box">
 				<div class="normal" v-if="!collapsed">Mocko Server</div>
@@ -39,7 +39,6 @@ const props = defineProps({
 	height: 100%;
 	background: #263238;
 	border-right: 1px solid #e6e6e6;
-	min-height: 360px;
 }
 
 .logo-box {
@@ -56,6 +55,7 @@ const props = defineProps({
 	.mini {
 		width: 100%;
 		text-align: center;
+		padding-right: 6px;
 	}
 }
 

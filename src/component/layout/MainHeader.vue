@@ -24,13 +24,14 @@
 
 			<!-- avatar -->
 			<el-col :span="8" class="header-avatar">
+
 				<el-dropdown>
-				<span class="el-dropdown">
-					<el-icon><avatar/></el-icon>
-					<el-icon class="el-icon--right">
-						<arrow-down/>
-					</el-icon>
-				</span>
+					<span >
+						<el-icon><avatar/></el-icon>
+						<el-icon class="el-icon--right">
+							<arrow-down/>
+						</el-icon>
+					</span>
 
 					<template #dropdown>
 						<el-dropdown-menu>
