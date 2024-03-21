@@ -17,6 +17,7 @@
 						:collapse-transition="false"
 						active-text-color="#ffffff"
 					>
+						<nav-item v-for="item in menuItems" :item="item" :key="item.id" />
 					</el-menu>
 				</el-scrollbar>
 			</div>
@@ -25,8 +26,12 @@
 </template>
 
 <script setup>
+
+import NavItem from '@/component/layout/NavItem.vue'
+
 const props = defineProps({
-	collapsed: Boolean
+	collapsed: Boolean,
+	menuItems: [],
 })
 </script>
 
