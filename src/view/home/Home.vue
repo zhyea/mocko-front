@@ -3,7 +3,7 @@
 		<sidebar :collapsed="isCollapsed"/>
 
 		<el-container direction="vertical">
-			<main-header :collapsed="isCollapsed" @menu="changeMenuStatus"/>
+			<head-bar :collapsed="isCollapsed" @menu="changeMenuStatus"/>
 			<el-main>
 				<router-view v-slot="{Component}">
 					<el-scrollbar height="100%">
@@ -19,7 +19,7 @@
 import {ref} from 'vue'
 
 import Sidebar from '@/component/layout/Sidebar.vue'
-import MainHeader from '@/component/layout/MainHeader.vue'
+import HeadBar from '@/component/layout/HeadBar.vue'
 
 
 let isCollapsed = ref(false)
