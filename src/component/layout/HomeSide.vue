@@ -17,7 +17,7 @@
 						:collapse-transition="false"
 						active-text-color="#ffffff"
 					>
-						<nav-item v-for="item in menuItems" :item="item" :key="item.id" />
+						<nav-item v-for="item in menuItems" :item="item" :key="item.id"/>
 					</el-menu>
 				</el-scrollbar>
 			</div>
@@ -29,7 +29,7 @@
 
 import NavItem from '@/component/layout/NavItem.vue'
 
-const props = defineProps({
+defineProps({
 	collapsed: Boolean,
 	menuItems: [],
 })

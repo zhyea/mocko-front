@@ -18,7 +18,7 @@
 <script setup>
 import {ref} from 'vue'
 
-import Sidebar from '@/component/layout/Sidebar.vue'
+import Sidebar from '@/component/layout/HomeSide.vue'
 import HeadBar from '@/component/layout/HeadBar.vue'
 
 
