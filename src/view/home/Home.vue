@@ -1,6 +1,6 @@
 <template>
 	<el-container class="home_container">
-		<sidebar :collapsed="isCollapsed"/>
+		<sidebar :collapsed="isCollapsed" :menu-items="homeMenuItem"/>
 
 		<el-container direction="vertical">
 			<head-bar :collapsed="isCollapsed" @menu="changeMenuStatus"/>
@@ -20,6 +20,8 @@ import {ref} from 'vue'
 
 import Sidebar from '@/component/layout/HomeSide.vue'
 import HeadBar from '@/component/layout/HeadBar.vue'
+
+import homeMenuItem from '@/view/home/menu'
 
 
 let isCollapsed = ref(false)
