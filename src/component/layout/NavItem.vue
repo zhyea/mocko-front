@@ -45,7 +45,7 @@ const props = defineProps({
 })
 
 const icon = computed(() => (name) => {
-	return name
+	return 'el-' +  name
 })
 </script>
 
