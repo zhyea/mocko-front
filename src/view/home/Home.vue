@@ -5,11 +5,7 @@
 		<el-container direction="vertical">
 			<head-bar :collapsed="isCollapsed" @menu="changeMenuStatus"/>
 			<el-main>
-				<router-view v-slot="{Component}">
-					<el-scrollbar height="100%">
-						<component :is="Component"/>
-					</el-scrollbar>
-				</router-view>
+				<router-view></router-view>
 			</el-main>
 		</el-container>
 	</el-container>

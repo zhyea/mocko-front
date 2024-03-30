@@ -36,6 +36,7 @@
 
 <script setup>
 import {computed} from 'vue'
+import {Orange, Lock} from "@element-plus/icons-vue";
 
 const props = defineProps({
 	item: {
@@ -45,7 +46,7 @@ const props = defineProps({
 })
 
 const icon = computed(() => (name) => {
-	return 'el-' +  name
+	return name
 })
 </script>
 

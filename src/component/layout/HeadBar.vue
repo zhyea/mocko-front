@@ -26,7 +26,7 @@
 			<el-col :span="8" class="header-avatar">
 
 				<el-dropdown>
-					<span >
+					<span>
 						<el-icon><avatar/></el-icon>
 						<el-icon class="el-icon--right">
 							<arrow-down/>
@@ -50,7 +50,6 @@
 <script setup>
 
 import {computed} from 'vue'
-import {ArrowDown, Avatar, Expand, Fold} from "@element-plus/icons-vue";
 import {useRouter} from 'vue-router'
 import {useAuthStore} from "@/store/auth.js";
 import {useBreadcrumbStore} from "@/store/breadcrumb.js";

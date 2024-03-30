@@ -2,21 +2,25 @@
 	<el-aside :width="collapsed ? '72px' : '250px'">
 		<div class="sidebar-box">
 			<div class="logo-box">
-				<div class="normal" v-if="!collapsed">Mocko Server</div>
-				<div class="mini" v-else>Mocko</div>
+				<div class="normal" v-if="!collapsed">
+					Mocko Server
+				</div>
+				<div class="mini" v-else>
+					<el-icon>
+						<home-filled/>
+					</el-icon>
+				</div>
 			</div>
 
 			<div class="nav-box">
 				<el-scrollbar height="100%">
-					<el-menu
-						class="el-menu-vertical"
-						:collapse="collapsed"
-						:router="true"
-						background-color="#263238"
-						text-color="#afb5bd"
-						:collapse-transition="false"
-						active-text-color="#ffffff"
-					>
+					<el-menu class="el-menu-vertical"
+					         :collapse="collapsed"
+					         :router="true"
+					         background-color="#263238"
+					         text-color="#afb5bd"
+					         :collapse-transition="false"
+					         active-text-color="#ffffff">
 						<nav-item v-for="item in menuItems" :item="item" :key="item.id"/>
 					</el-menu>
 				</el-scrollbar>
@@ -28,6 +32,7 @@
 <script setup>
 
 import NavItem from '@/component/layout/NavItem.vue'
+import {Avatar} from "@element-plus/icons-vue";
 
 defineProps({
 	collapsed: Boolean,

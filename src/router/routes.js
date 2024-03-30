@@ -1,14 +1,24 @@
 import authRoutes from '@/view/auth/routes'
 import dashboardRoutes from '@/view/dashboard/routes'
-import homeRoutes from '@/view/home/routes'
+import projectsRoutes from '@/view/projects/routes'
+import usersRoutes from '@/view/users/routes'
 
 import NotFoundPage from '@/view/error/NotFound.vue'
+import HomePage from "@/view/home/Home.vue";
 
 
 const routes = [
-	...homeRoutes,
+	{
+		name: 'Home',
+		path: '/',
+		component: HomePage,
+		children: [
+			...dashboardRoutes,
+			...projectsRoutes,
+			...usersRoutes,
+		],
+	},
 	...authRoutes,
-	...dashboardRoutes,
 	{
 		path: "/:pathMatch(.*)*", component: NotFoundPage, name: 'notFound'
 	}

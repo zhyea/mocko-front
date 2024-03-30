@@ -1,13 +1,21 @@
 export default [
 	{
 		name: 'Home',
-		icon: 'orange',
+		icon: 'Platform',
 		uri: '/home',
 
 		children: [{
-			name: 'Applications',
-			icon: 'lock',
-			uri: '/apps',
+			name: '应用',
+			icon: 'menu',
+			uri: '/projects',
+		}, {
+			name: '用户',
+			icon: 'user',
+			uri: '/users',
+		}, {
+			name: '设置',
+			icon: 'setting',
+			uri: '#',
 		}],
 	},
 ]
