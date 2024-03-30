@@ -31,7 +31,7 @@ import NavItem from '@/component/layout/NavItem.vue'
 
 defineProps({
 	collapsed: Boolean,
-	menuItems: [],
+	menuItems: Object,
 })
 </script>
 
