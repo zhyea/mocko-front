@@ -12,6 +12,9 @@ const routes = [
 		name: 'Home',
 		path: '/',
 		component: HomePage,
+		meta: {
+			title: '首页',
+		},
 		children: [
 			...dashboardRoutes,
 			...projectsRoutes,

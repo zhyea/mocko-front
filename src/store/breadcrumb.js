@@ -10,7 +10,7 @@ export const useBreadcrumbStore = defineStore('breadcrumb', {
 
 	actions: {
 
-		setBreadcrumb(breadcrumb) {
+		set(breadcrumb) {
 			let title = []
 			this.breadcrumb = breadcrumb.filter(
 				item => {
@@ -22,8 +22,10 @@ export const useBreadcrumbStore = defineStore('breadcrumb', {
 					return item.meta.title
 				}
 			)
+
+			console.log(this.breadcrumb)
 		},
-		//
+
 	},
 
 })

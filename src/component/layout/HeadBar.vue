@@ -12,19 +12,16 @@
 			<!-- breadcrumb -->
 			<el-col :span="15">
 				<el-breadcrumb separator="/">
-					<el-breadcrumb-item
-						v-for="item in breadcrumb"
-						:to="{path: item.path}"
-						:key="item.path"
-					>
-						{{ item.title }}
+					<el-breadcrumb-item v-for="item in breadcrumb"
+					                    :to="item.path"
+					                    :key="item.path">
+						{{ item.meta.title }}
 					</el-breadcrumb-item>
 				</el-breadcrumb>
 			</el-col>
 
 			<!-- avatar -->
 			<el-col :span="8" class="header-avatar">
-
 				<el-dropdown>
 					<span>
 						<el-icon><avatar/></el-icon>
@@ -51,8 +48,8 @@
 
 import {computed} from 'vue'
 import {useRouter} from 'vue-router'
-import {useAuthStore} from "@/store/auth.js";
-import {useBreadcrumbStore} from "@/store/breadcrumb.js";
+import {useAuthStore} from "@/store/auth";
+import {useBreadcrumbStore} from "@/store/breadcrumb";
 
 const props = defineProps({
 	collapsed: Boolean,

@@ -7,7 +7,7 @@
 				</div>
 				<div class="mini" v-else>
 					<el-icon>
-						<home-filled/>
+						<Assassin/>
 					</el-icon>
 				</div>
 			</div>
@@ -32,11 +32,11 @@
 <script setup>
 
 import NavItem from '@/component/layout/NavItem.vue'
-import {Avatar} from "@element-plus/icons-vue";
+import Assassin from "@/component/icons/Assassin.vue";
 
 defineProps({
 	collapsed: Boolean,
-	menuItems: Object,
+	menuItems: Array,
 })
 </script>
 

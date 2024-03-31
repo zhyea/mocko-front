@@ -4,6 +4,6 @@ export default [
 	{
 		name: 'Dashboard',
 		path: '/dashboard',
-		component: DashboardPage
+		component: DashboardPage,
 	},
 ]

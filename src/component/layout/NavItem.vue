@@ -1,4 +1,5 @@
 <template>
+	
 	<!-- parent -->
 	<el-sub-menu
 		:index="props.item.uri"
@@ -22,7 +23,6 @@
 		</template>
 	</el-sub-menu>
 
-
 	<!-- children -->
 	<el-menu-item
 		:index="props.item.uri"
@@ -36,7 +36,6 @@
 
 <script setup>
 import {computed} from 'vue'
-import {Orange, Lock} from "@element-plus/icons-vue";
 
 const props = defineProps({
 	item: {

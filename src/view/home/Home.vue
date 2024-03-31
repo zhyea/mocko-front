@@ -1,6 +1,8 @@
 <template>
 	<el-container class="home_container">
-		<sidebar :collapsed="isCollapsed" :menu-items="homeMenuItem"/>
+
+		<sidebar :collapsed="isCollapsed"
+		         :menu-items="homeMenuItem"/>
 
 		<el-container direction="vertical">
 			<head-bar :collapsed="isCollapsed" @menu="changeMenuStatus"/>
@@ -8,6 +10,7 @@
 				<router-view></router-view>
 			</el-main>
 		</el-container>
+
 	</el-container>
 </template>
 
@@ -26,12 +29,14 @@ function changeMenuStatus(status) {
 	isCollapsed.value = status
 }
 
+
 </script>
 
 <style lang="less" scoped>
 
 .home_container {
 	height: 100%;
+	background-color: #FFFFFF;
 }
 
 .el-main {

@@ -4,6 +4,9 @@ export default [
 	{
 		name: 'Users',
 		path: '/users',
-		component: UsersPage
+		component: UsersPage,
+		meta: {
+			title: '用户',
+		},
 	},
 ]

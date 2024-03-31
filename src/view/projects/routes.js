@@ -4,6 +4,9 @@ export default [
 	{
 		name: 'Project',
 		path: '/projects',
-		component: ProjectPage
+		component: ProjectPage,
+		meta: {
+			title: '应用',
+		},
 	},
 ]
