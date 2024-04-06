@@ -1,6 +1,6 @@
 <template>
 	<div class="app-container">
-		<app-item v-for="item in appItems" :item="item" :key="item.id"/>
+		<app-item v-for="item in appItems" :item="item" :key="item.appId"/>
 	</div>
 </template>
 
@@ -17,7 +17,7 @@ defineProps({
 let appItems = ref([])
 
 getAppList().then(response => {
-	appItems.value = response
+	appItems.value = response.data
 })
 
 </script>

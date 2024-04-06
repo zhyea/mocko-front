@@ -5,7 +5,7 @@
 		</div>
 
 		<div class="app-title">
-			{{ props.item.name }}
+			{{ props.item.appName }}
 		</div>
 	</div>
 </template>

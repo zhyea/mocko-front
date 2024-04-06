@@ -22,8 +22,6 @@ export const useBreadcrumbStore = defineStore('breadcrumb', {
 					return item.meta.title
 				}
 			)
-
-			console.log(this.breadcrumb)
 		},
 
 	},
