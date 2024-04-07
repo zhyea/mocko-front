@@ -26,14 +26,14 @@ axiosInst.interceptors.request.use(
 //3. 响应拦截器
 axiosInst.interceptors.response.use(
 	response => {
+		let result = response.data
 		//判断code码
-		return response.data;
+		return result;
 	},
 	error => {
 		let resp = error.response
 
 		// TODO 处理无权限跳出
-
 		let msg = (resp.data.message ? resp.data.message : resp.statusText)
 
 		ElMessage.warning({

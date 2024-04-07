@@ -1,13 +1,13 @@
 <template>
 	<div class="app-container">
-		<app-item v-for="item in appItems" :item="item" :key="item.appId"/>
+		<app-item v-for="item in appItems" :item="item" :key="item.appId" />
 	</div>
 </template>
 
 <script setup>
 import AppItem from "@/view/projects/AppItem.vue";
-import {getAppList} from "@/api/project.js";
-import {ref} from "vue";
+import { getAppList } from "@/api/project.js";
+import { ref } from "vue";
 
 defineProps({
 	appItems: Array,
@@ -17,7 +17,11 @@ defineProps({
 let appItems = ref([])
 
 getAppList().then(response => {
-	appItems.value = response.data
+	let arr = response.data
+	arr.forEach(e => {
+		e.icon = e.appName.charAt(0);
+	});
+	appItems.value = arr
 })
 
 </script>

@@ -19,7 +19,6 @@ const props = defineProps({
 </script>
 
 <style scoped lang="less">
-
 .app-box {
 	display: grid;
 	width: 150px;
@@ -27,7 +26,7 @@ const props = defineProps({
 	justify-content: center;
 
 	.app-icon {
-		display: block;
+		display: flex;
 		margin: 20px 30px 0 30px;
 		padding: 0;
 		height: 90px;
@@ -35,6 +34,11 @@ const props = defineProps({
 		border: 3px solid #42b983;
 		border-radius: 50%;
 		background-color: #FFFFFF;
+		align-items: center;
+		justify-content: center;
+		font-size: 36px;
+		font-weight: bold;
+		color: #42b983;
 	}
 
 	.app-title {
