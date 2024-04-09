@@ -1,13 +1,14 @@
 <template>
-	<div class="app-box">
-		<div class="app-icon">
-			{{ props.item.icon }}
-		</div>
 
-		<div class="app-title">
-			{{ props.item.appName }}
+		<div class="app-box">
+			<div class="app-icon">
+				{{ props.item.icon }}
+			</div>
+
+			<div class="app-title">
+				{{ props.item.appName }}
+			</div>
 		</div>
-	</div>
 </template>
 
 <script setup>

@@ -5,9 +5,10 @@
 </template>
 
 <script setup>
-import AppItem from "@/view/projects/AppItem.vue";
-import { getAppList } from "@/api/project.js";
 import { ref } from "vue";
+
+import AppItem from "@/component/layout/AppItem.vue";
+import { getAppList } from "@/api/project.js";
 
 defineProps({
 	appItems: Array,
