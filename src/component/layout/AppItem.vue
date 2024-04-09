@@ -1,5 +1,5 @@
 <template>
-
+	<router-link @click="goToApp(props.item.appId)" :to="{}">
 		<div class="app-box">
 			<div class="app-icon">
 				{{ props.item.icon }}
@@ -9,6 +9,7 @@
 				{{ props.item.appName }}
 			</div>
 		</div>
+	</router-link>
 </template>
 
 <script setup>
@@ -17,6 +18,10 @@ const props = defineProps({
 		type: Object,
 	}
 })
+
+const goToApp = (appId) => {
+	console.log(appId)
+}
 </script>
 
 <style scoped lang="less">
@@ -51,7 +56,12 @@ const props = defineProps({
 		overflow: hidden;
 		text-align: center;
 		font-family: 'Monospaced', 'serif';
+		color: #1a1a1a;
 	}
+}
 
+
+.app-box:hover {
+	background-color: #F0FFF0;
 }
 </style>

@@ -17,11 +17,11 @@ import TreeSide from '@/component/layout/TreeSide.vue'
 import { getClassTree } from "@/api/project.js";
 
 
-const treeData = ref(null)
+let treeData = ref(null)
 
 console.log(window.location)
 
-getAppList().then(response => {
+getClassTree().then(response => {
     treeData = response.data
 })
 

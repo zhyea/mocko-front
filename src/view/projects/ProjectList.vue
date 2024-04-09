@@ -20,7 +20,7 @@ let appItems = ref([])
 getAppList().then(response => {
 	let arr = response.data
 	arr.forEach(e => {
-		e.icon = e.appName.charAt(0);
+		e.icon = e.appName.charAt(0).toUpperCase();
 	});
 	appItems.value = arr
 })
