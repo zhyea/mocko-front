@@ -32,19 +32,22 @@ axiosInst.interceptors.response.use(
 	},
 	error => {
 		let resp = error.response
-
-		// TODO 处理无权限跳出
-		let msg = (resp.data.message ? resp.data.message : resp.statusText)
-
-		ElMessage.warning({
-			msg,
-			duration: 1500,
-		})
+		if (!resp) {
+			ElMessage.warning({
+				message: '服务器开小差了',
+				duration: 1500,
+			})
+		} else {
+			let msg = (resp.data.message ? resp.data.message : resp.statusText)
+			ElMessage.warning({
+				msg,
+				duration: 1500,
+			})
+		}
 
 		return Promise.reject(error);
 	}
 );
-
 
 
 export default axiosInst;
