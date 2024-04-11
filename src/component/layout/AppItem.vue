@@ -1,15 +1,13 @@
 <template>
-	<router-link @click="goToApp(props.item.appId)" :to="{}">
-		<div class="app-box">
-			<div class="app-icon">
-				{{ props.item.icon }}
-			</div>
-
-			<div class="app-title">
-				{{ props.item.appName }}
-			</div>
+	<div class="app-box" @click="goToApp(props.item.appId)">
+		<div class="app-icon">
+			{{ props.item.icon }}
 		</div>
-	</router-link>
+
+		<div class="app-title">
+			{{ props.item.appName }}
+		</div>
+	</div>
 </template>
 
 <script setup>
@@ -63,5 +61,10 @@ const goToApp = (appId) => {
 
 .app-box:hover {
 	background-color: #F0FFF0;
+	cursor: pointer;
+
+	.app-title {
+		color: #888888;
+	}
 }
 </style>
