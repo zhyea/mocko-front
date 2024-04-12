@@ -11,14 +11,22 @@
 </template>
 
 <script setup>
+import {useDestinationStore} from '@/store/destination'
+
+
 const props = defineProps({
 	item: {
 		type: Object,
 	}
 })
 
+
+const destinationStore = useDestinationStore();
+
 const goToApp = (appId) => {
 	console.log(appId)
+	destinationStore.set('appId', appId)
+	this.$router.push({path: '/method'})
 }
 </script>
 

@@ -1,6 +1,7 @@
 import {defineStore} from "pinia";
 
-export const useBreadcrumbStore = defineStore('breadcrumb', {
+export const useBreadcrumbStore
+	= defineStore('breadcrumb', {
 
 	state: () => ({
 		local: '',
@@ -17,6 +18,7 @@ export const useBreadcrumbStore = defineStore('breadcrumb', {
 					if (title.indexOf(item.meta.title) >= 0) {
 						return false
 					}
+
 					title.push(item.meta.title)
 
 					return item.meta.title
