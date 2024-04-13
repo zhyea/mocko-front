@@ -11,8 +11,9 @@
 </template>
 
 <script setup>
-import {useDestinationStore} from '@/store/destination'
+import {useRouter} from 'vue-router';
 
+const router = useRouter();
 
 const props = defineProps({
 	item: {
@@ -20,13 +21,8 @@ const props = defineProps({
 	}
 })
 
-
-const destinationStore = useDestinationStore();
-
 const goToApp = (appId) => {
-	console.log(appId)
-	destinationStore.set('appId', appId)
-	this.$router.push({path: '/method'})
+	router.push({name: 'Method', query: {'appId': appId}})
 }
 </script>
 

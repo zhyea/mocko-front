@@ -11,10 +11,10 @@ import App from './App.vue'
 import Router from './router/index.js'
 
 const pinia = createPinia()
-
+const router = Router
 const app = createApp(App);
 
-app.use(Router).use(pinia);
+app.use(router).use(pinia);
 
 for (const iconName in icons) {
     if (Reflect.has(icons, iconName)) {

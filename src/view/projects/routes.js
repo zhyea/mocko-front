@@ -1,10 +1,10 @@
 import ProjectListPage from './ProjectList.vue'
-import MethodPage from './Method.vue'
+import MethodPage from './Project.vue'
 
 export default [
 	{
-		name: 'Project',
-		path: '/projects',
+		name: 'ProjectList',
+		path: '/project-list',
 		component: ProjectListPage,
 		meta: {
 			title: '应用',

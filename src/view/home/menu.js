@@ -7,7 +7,7 @@ export default [
 		children: [{
 			name: '应用',
 			icon: 'menu',
-			uri: '/projects',
+			uri: '/project-list',
 		}, {
 			name: '用户',
 			icon: 'user',
