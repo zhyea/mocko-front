@@ -10,8 +10,9 @@
 		<template #default="{ node, data }">
               <span>
                 <el-icon>
-	                <Folder v-if="data.children.length"/>
-	                <DocumentAdd v-if="!data.children.length"/>
+	                <Folder v-if="!data.classNode && !data.methodNode"/>
+	                <Files v-if="data.classNode"/>
+	                <DocumentAdd v-if="data.methodNode"/>
                 </el-icon>  {{ node.label }}
               </span>
 		</template>
@@ -21,6 +22,8 @@
 <script setup>
 
 import {useRouter} from "vue-router";
+import {getMethods} from "@/api/type.js";
+
 
 const router = useRouter();
 
@@ -33,11 +36,45 @@ const treeConfig = {
 	label: 'value',
 }
 
-const handleNodeClick = (data) => {
-	console.log(data)
-}
-</script>
+const Tree = {
+	value: String,
 
+	classNode: Boolean,
+
+	methodNode: Boolean,
+
+	children: Array,
+}
+
+const handleNodeClick = (data, node) => {
+	console.log(data)
+	addMethods(data, node)
+	loadMethodPage(data)
+}
+
+
+function loadMethodPage(data) {
+	if (!data.methodNode) {
+		return
+	}
+
+	router.push({name: 'Method', query: {'methodId': data.methodId}})
+}
+
+
+function addMethods(data, node) {
+	if (!data.classNode || data.children.length) {
+		return
+	}
+
+	getMethods(data.classId).then(response => {
+		let methods = response.data
+		data.children.push(...methods)
+		node.expand()
+	})
+}
+
+</script>
 
 <style lang="less" scoped>
 </style>

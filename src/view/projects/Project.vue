@@ -14,7 +14,7 @@
 import {ref} from "vue";
 
 import TreeSide from '@/component/layout/TreeSide.vue'
-import {getClassTree} from "@/api/project.js";
+import {getClassTree} from "@/api/type.js";
 import {useRoute} from 'vue-router';
 
 const route = useRoute();
