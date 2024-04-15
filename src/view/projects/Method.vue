@@ -18,6 +18,12 @@
 				          v-model="form.methodAlias"/>
 			</el-form-item>
 
+			<el-form-item label="">
+				<el-input placeholder="返回值类型"
+				          readonly
+				          v-model="form.responseType"/>
+			</el-form-item>
+
 			<el-form-item label="" prop="response">
 				<el-input v-model="form.response"
 				          type="textarea"/>
@@ -43,6 +49,7 @@ const route = useRoute();
 const form = ref({
 	methodName: '',
 	methodAlias: '',
+	responseType: '',
 	response: '',
 })
 
@@ -80,6 +87,7 @@ function doSubmit(formData) {
 				})
 			} else {
 				ElMessageBox({
+					title: '提示',
 					message: response.msg,
 				})
 			}
