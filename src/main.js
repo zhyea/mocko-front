@@ -6,7 +6,6 @@ import * as icons from '@element-plus/icons-vue'
 
 import './assets/style.css'
 import './assets/icons.css'
-import 'element-plus/dist/index.css'
 
 import App from './App.vue'
 import Router from './router/index.js'

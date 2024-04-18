@@ -7,6 +7,7 @@ import Components from 'unplugin-vue-components/vite'
 import {ElementPlusResolver} from 'unplugin-vue-components/resolvers'
 import Icons from 'unplugin-icons/vite'
 import IconsResolver from 'unplugin-icons/resolver'
+import ElementPlus from 'unplugin-element-plus/vite'
 
 
 export default defineConfig({
@@ -36,6 +37,8 @@ export default defineConfig({
 				})
 			],
 		}),
+
+		ElementPlus(),
 
 		Icons({
 			autoInstall: true,
