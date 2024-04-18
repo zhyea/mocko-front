@@ -21,6 +21,7 @@ import Sidebar from '@/component/layout/HomeSide.vue'
 import HeadBar from '@/component/layout/HeadBar.vue'
 
 import homeMenuItem from '@/view/home/menu'
+import { ElMessageBox } from 'element-plus';
 
 
 let isCollapsed = ref(false)
@@ -29,6 +30,11 @@ function changeMenuStatus(status) {
 	isCollapsed.value = status
 }
 
+ElMessageBox({
+					title: '提示',
+					message: '保存成功.',
+					type: 'success',
+				})
 
 </script>
 
