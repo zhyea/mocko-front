@@ -31,8 +31,6 @@ axiosInst.interceptors.response.use(
 		return result;
 	},
 	error => {
-		console.log(error)
-
 		let resp = error.response
 		if (!resp) {
 			ElMessage.warning({

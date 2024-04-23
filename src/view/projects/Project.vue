@@ -1,35 +1,36 @@
 <template>
 	<el-container class="project-container">
 		<el-aside class="tree-container">
-			<tree-side :data="treeData"/>
+			<tree-side :tree-data="treeData" :app-id="appId" />
 		</el-aside>
 
 		<el-main>
-			<router-view></router-view>
+			<router-view :key="$route.fullPath"></router-view>
 		</el-main>
 	</el-container>
 </template>
 
 <script setup>
-import {ref} from "vue";
+import { ref } from "vue";
 
 import TreeSide from '@/component/layout/TreeSide.vue'
-import {getClassTree} from "@/api/type.js";
-import {useRoute} from 'vue-router';
+import { getClassTree } from "@/api/type.js";
+import { useRoute } from 'vue-router';
 
 const route = useRoute();
 
 let treeData = ref(null)
+let appId = ref('')
 
 getClassTree(route.query.appId).then(response => {
 	treeData.value = response.data
+	appId = route.query.appId
 })
 
 </script>
 
 
 <style lang="less" scoped>
-
 .project-container {
 	height: 100%;
 }

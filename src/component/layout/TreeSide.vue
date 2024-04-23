@@ -1,34 +1,36 @@
 <template>
-	<el-tree
-		style="max-width: 300px"
-		:data="props.treeData"
-		:props="treeConfig"
+	<el-tree style="max-width: 300px" 
+		:data="props.treeData" 
+		:props="treeConfig" 
 		:highlight-current="true"
-		:default-expand-all="true"
-		@node-click="handleNodeClick"
-	>
+		:default-expand-all="true" 
+		@node-click="handleNodeClick">
+
 		<template #default="{ node, data }">
-              <span>
-                <el-icon>
-	                <Folder v-if="!data.classNode && !data.methodNode"/>
-	                <Files v-if="data.classNode"/>
-	                <DocumentAdd v-if="data.methodNode"/>
-                </el-icon>  {{ node.label }}
-              </span>
+			<span>
+				<el-icon>
+					<Folder v-if="!data.classNode && !data.methodNode" />
+					<Files v-if="data.classNode" />
+					<DocumentAdd v-if="data.methodNode" />
+				</el-icon> {{ node.label }}
+			</span>
 		</template>
+
 	</el-tree>
 </template>
 
 <script setup>
 
-import {useRouter} from "vue-router";
-import {getMethods} from "@/api/type.js";
+import { useRouter, useRoute } from "vue-router";
+import { getMethods } from "@/api/type.js";
 
+const route = useRoute();
 
 const router = useRouter();
 
 const props = defineProps({
 	treeData: Object,
+	appId: String,
 })
 
 const treeConfig = {
@@ -47,7 +49,6 @@ const Tree = {
 }
 
 const handleNodeClick = (data, node) => {
-	console.log(data)
 	addMethods(data, node)
 	loadMethodPage(data)
 }
@@ -58,23 +59,32 @@ function loadMethodPage(data) {
 		return
 	}
 
-	router.push({name: 'Method', query: {'methodId': data.methodId}})
+	router.push({
+		name: 'Method',
+		query: {
+			'appId': route.query.appId,
+			'methodId': data.methodId,
+		}
+	})
 }
 
 
 function addMethods(data, node) {
-	if (!data.classNode || data.children.length) {
+	if (!data.classNode || (data.children && data.children.length)) {
 		return
 	}
 
 	getMethods(data.classId).then(response => {
 		let methods = response.data
-		data.children.push(...methods)
+		if (!data.children) {
+			data.children = response.data
+		} else {
+			data.children.push(...methods)
+		}
 		node.expand()
 	})
 }
 
 </script>
 
-<style lang="less" scoped>
-</style>
+<style lang="less" scoped></style>
