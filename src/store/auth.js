@@ -10,12 +10,14 @@ export const useAuthStore = defineStore('auth', {
 
 	actions: {
 
+		//setToken
 		setTokenHandle(token) {
 			this.token = token
 			setToken(this.token)
 		},
 
 
+		//login
 		loginHandle(data) {
 			return new Promise((resolve, reject) => {
 				return doLogin(data)
@@ -35,6 +37,7 @@ export const useAuthStore = defineStore('auth', {
 		},
 
 
+		//logout
 		logoutHandle() {
 			return new Promise((resolve, reject) => {
 				return doLogout()
@@ -49,6 +52,7 @@ export const useAuthStore = defineStore('auth', {
 			})
 		}
 
+		// -----
 	}
 
 })

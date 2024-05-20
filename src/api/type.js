@@ -1,5 +1,6 @@
 import request from '@/utils/request.js'
 
+
 /**
  * 类结构树
  * @param  appId 应用ID
