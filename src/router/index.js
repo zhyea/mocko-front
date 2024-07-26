@@ -1,8 +1,7 @@
 import {createRouter, createWebHistory} from 'vue-router'
 
 import routes from './routes'
-import config from '@/config'
-
+import config from "@/config/index.js";
 
 //-创建路由对象
 const router = createRouter({
@@ -14,9 +13,11 @@ const router = createRouter({
 //全局守卫  访问非Login界面时，验证是否已登录
 router.beforeEach((to, from, next) => {
 
-	if(to.name !== config.loginRouteName){
+	console.log(to)
+
+	if (to.name === config.loginRouteName) {
 		next({name: config.loginRouteName});
-	}else{
+	} else {
 		next();
 	}
 
