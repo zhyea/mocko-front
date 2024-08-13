@@ -98,7 +98,6 @@ function doSubmit(formData) {
 
 const methodFormRules = {
 	response: [{
-		required: true, trigger: 'blur', message: '用户名不可为空'
 	}],
 }
 </script>

@@ -1,8 +1,7 @@
 import {createRouter, createWebHistory} from 'vue-router'
 
 import routes from './routes'
-import config from '@/config'
-
+import config from "@/config/index.js";
 
 //-创建路由对象
 const router = createRouter({
@@ -20,7 +19,7 @@ router.beforeEach((to, from, next) => {
 
 	if(to.name === config.loginRouteName){
 		next({name: config.loginRouteName});
-	}else{
+	} else {
 		next();
 	}
 
