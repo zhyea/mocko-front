@@ -14,7 +14,11 @@ const router = createRouter({
 //全局守卫  访问非Login界面时，验证是否已登录
 router.beforeEach((to, from, next) => {
 
-	if(to.name !== config.loginRouteName){
+	console.log(to)
+	console.log(from)
+
+
+	if(to.name === config.loginRouteName){
 		next({name: config.loginRouteName});
 	}else{
 		next();
