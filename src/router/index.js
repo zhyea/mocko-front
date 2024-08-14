@@ -25,7 +25,7 @@ router.beforeEach((to, from, next) => {
 
 
 	//判断是否已登录 查sessionStorage中是否有isAuthenticated信息
-	/*let isAuthenticated = sessionStorage.getItem("isAuthenticated")
+	let isAuthenticated = sessionStorage.getItem("isAuthenticated")
 	//判断路由的别名不是登录且未进行登录认证，就跳转去登录
 	if (to.name != "LoginPage" && !isAuthenticated) {
 		next({name: "LoginPage"})
@@ -34,7 +34,7 @@ router.beforeEach((to, from, next) => {
 		next({name: "HomePage"})
 	} else {
 		next()
-	}*/
+	}
 })
 
 
