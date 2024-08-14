@@ -17,7 +17,7 @@ router.beforeEach((to, from, next) => {
 	console.log(from)
 
 
-	if(to.name === config.loginRouteName){
+	if(to.name !== config.loginRouteName){
 		next({name: config.loginRouteName});
 	} else {
 		next();

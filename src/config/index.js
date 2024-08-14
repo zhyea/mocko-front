@@ -1,3 +1,3 @@
 export default {
-  loginRouteName: 'login',
+  loginRouteName: 'Login',
 }
