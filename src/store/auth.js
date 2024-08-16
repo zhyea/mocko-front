@@ -1,5 +1,6 @@
 import {defineStore} from "pinia";
 import {doLogin, doLogout, setToken} from "@/api/auth.js";
+import config from "@/config/index.js";
 
 export const useAuthStore = defineStore('auth', {
 
@@ -25,6 +26,7 @@ export const useAuthStore = defineStore('auth', {
 						response => {
 							const token = response.data
 							this.setTokenHandle(token)
+							sessionStorage.setItem(config.isLogin, "true")
 							resolve()
 						}
 					)

@@ -1,3 +1,8 @@
 export default {
-  loginRouteName: 'Login',
+	// route
+	loginRouteName: 'Login',
+	homeRouteName: 'Home',
+
+	// auth
+	isLogin: 'isLogin',
 }
