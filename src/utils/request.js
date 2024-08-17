@@ -1,5 +1,6 @@
 import axios from 'axios';
 import {ElMessage} from "element-plus";
+import config from "@/config/index.js";
 
 //1. 创建axios对象
 const axiosInst = axios.create({
@@ -25,10 +26,23 @@ axiosInst.interceptors.request.use(
 
 //3. 响应拦截器
 axiosInst.interceptors.response.use(
-	response => {
-		let result = response.data
+	resp => {
+		let result = resp.data
+
 		//判断code码
-		return result;
+		let code = result.code;
+		if (code === 0) {
+			return result;
+		} else if (code === 100) {
+			// 执行跳转到登录页
+		} else {
+			let msg = (result.msg ? result.msg : resp.statusText)
+			ElMessage.warning({
+				message: msg,
+				duration: 1500,
+			})
+			return result;
+		}
 	},
 	error => {
 		let resp = error.response
@@ -38,9 +52,9 @@ axiosInst.interceptors.response.use(
 				duration: 1500,
 			})
 		} else {
-			let msg = (resp.data.message ? resp.data.message : resp.statusText)
+			let msg = (resp.data.msg ? resp.data.msg : resp.statusText)
 			ElMessage.warning({
-				msg,
+				message: msg,
 				duration: 1500,
 			})
 		}

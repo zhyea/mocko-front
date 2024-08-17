@@ -50,6 +50,7 @@ import {computed} from 'vue'
 import {useRouter} from 'vue-router'
 import {useAuthStore} from "@/store/auth";
 import {useBreadcrumbStore} from "@/store/breadcrumb";
+import {ElMessageBox, ElMessage} from "element-plus";
 
 const props = defineProps({
 	collapsed: Boolean,
@@ -87,13 +88,28 @@ function openChangePasswordPage() {
  * 退出登录
  */
 function logout() {
-	authStore.logoutHandle()
-		.then(() => {
-			router.push({
-				name: 'Login'
+	ElMessageBox.confirm(
+		'是否确认退出登录？', '提示',
+		{
+			confirmButtonText: '确认',
+			cancelButtonText: '取消',
+			type: 'warning',
+		}
+	).then(() => {
+		authStore.logoutHandle()
+			.then(() => {
+				router.push({
+					name: 'Login'
+				})
 			})
+	}).catch(() => {
+		//用户点击了取消
+		ElMessage.success({
+			message: '取消退出',
 		})
+	})
 }
+
 </script>
 
 

@@ -29,3 +29,11 @@ export function doLogout() {
 export function setToken(token) {
 	request.defaults.headers.common.Authorization = `Bearer ${token}`
 }
+
+
+/**
+ * 设置token
+ */
+export function removeToken() {
+	request.defaults.headers.common.Authorization = ``
+}

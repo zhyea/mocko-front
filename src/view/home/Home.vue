@@ -21,7 +21,6 @@ import Sidebar from '@/component/layout/HomeSide.vue'
 import HeadBar from '@/component/layout/HeadBar.vue'
 
 import homeMenuItem from '@/view/home/menu'
-import { ElMessageBox } from 'element-plus';
 
 
 let isCollapsed = ref(false)
