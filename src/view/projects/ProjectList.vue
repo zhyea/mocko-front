@@ -18,10 +18,12 @@ defineProps({
 let appItems = ref([])
 
 getAppList().then(response => {
-	let arr = response.data
-	if (!arr) {
+
+	if (!response || !response.data) {
 		return;
 	}
+
+	let arr = response.data
 	arr.forEach(e => {
 		e.icon = e.appName.charAt(0).toUpperCase();
 	});

@@ -11,8 +11,6 @@ import {useRoute} from "vue-router";
 const router = useRoute()
 const breadcrumbStore = useBreadcrumbStore()
 
-console.log(import.meta.env);
-
 onMounted(
 	() => {
 		breadcrumbStore.set(router.matched)

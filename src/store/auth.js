@@ -1,5 +1,5 @@
 import {defineStore} from "pinia";
-import {doLogin, doLogout, setToken, removeToken} from "@/api/auth.js";
+import {doLogin, doLogout, setHttpToken, removeHttpToken} from "@/api/auth.js";
 import config from "@/config/index.js";
 
 export const useAuthStore = defineStore('auth', {
@@ -14,7 +14,9 @@ export const useAuthStore = defineStore('auth', {
 		//setToken
 		setTokenHandle(token) {
 			this.token = token
-			setToken(this.token)
+			setHttpToken(this.token)
+			sessionStorage.setItem(config.isLogin, "true")
+			sessionStorage.setItem(config.Authorization, token)
 		},
 
 
@@ -26,7 +28,6 @@ export const useAuthStore = defineStore('auth', {
 						response => {
 							const token = response.data
 							this.setTokenHandle(token)
-							sessionStorage.setItem(config.isLogin, "true")
 							resolve()
 						}
 					)
@@ -46,7 +47,7 @@ export const useAuthStore = defineStore('auth', {
 					.then(
 						() => {
 							sessionStorage.removeItem(config.isLogin)
-							removeToken()
+							removeHttpToken()
 							resolve()
 						}
 					).catch(

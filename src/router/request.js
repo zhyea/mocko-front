@@ -1,6 +1,9 @@
 import axios from 'axios';
 import {ElMessage} from "element-plus";
+import router from '@/router/index.js'
 import config from "@/config/index.js";
+
+axios.defaults.withCredentials = true
 
 //1. 创建axios对象
 const axiosInst = axios.create({
@@ -10,13 +13,17 @@ const axiosInst = axios.create({
 	headers: {
 		"Content-Type": "application/json;charset=UTF-8",
 	},
+	withCredentials: true,
 });
 
 
 //2. 请求拦截器
-axiosInst.interceptors.request.use(
-	config => {
-		return config;
+axiosInst.interceptors.request.use(cfg => {
+		let token = sessionStorage.getItem(config.Authorization)
+		if (token) {
+			cfg.headers.Authorization = `Bearer ${token}`
+		}
+		return cfg;
 	},
 	error => {
 		Promise.reject(error);
@@ -35,6 +42,9 @@ axiosInst.interceptors.response.use(
 			return result;
 		} else if (code === 100) {
 			// 执行跳转到登录页
+			sessionStorage.removeItem(config.Authorization)
+			sessionStorage.removeItem(config.isLogin)
+			router.push({name: config.loginRouteName})
 		} else {
 			let msg = (result.msg ? result.msg : resp.statusText)
 			ElMessage.warning({

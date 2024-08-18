@@ -4,5 +4,6 @@ export default {
 	homeRouteName: 'Home',
 
 	// auth
+	Authorization: 'token',
 	isLogin: 'isLogin',
 }

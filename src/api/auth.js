@@ -1,4 +1,4 @@
-import request from '@/utils/request.js'
+import request from '@/router/request.js'
 
 
 /**
@@ -26,7 +26,7 @@ export function doLogout() {
 /**
  * 设置token
  */
-export function setToken(token) {
+export function setHttpToken(token) {
 	request.defaults.headers.common.Authorization = `Bearer ${token}`
 }
 
@@ -34,6 +34,6 @@ export function setToken(token) {
 /**
  * 设置token
  */
-export function removeToken() {
+export function removeHttpToken() {
 	request.defaults.headers.common.Authorization = ``
 }

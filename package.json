@@ -4,7 +4,7 @@
 	"version": "0.0.1",
 	"type": "module",
 	"scripts": {
-		"dev": "vite --mode dev --port 1024",
+		"dev": "vite --mode dev --host 127.0.0.1 --port 1024",
 		"test": "vite --mode test --post 1022",
 		"prod": "vite --mode prod --port 1022",
 		"build:dev": "vite build --mode dev",
