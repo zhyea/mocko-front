@@ -10,6 +10,8 @@ export function doLogin(data) {
 		'/login',
 		{
 			...data,
+		}, {
+			withCredentials: true
 		})
 
 }

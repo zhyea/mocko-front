@@ -3,27 +3,28 @@ import {ElMessage} from "element-plus";
 import router from '@/router/index.js'
 import config from "@/config/index.js";
 
-axios.defaults.withCredentials = true
 
 //1. 创建axios对象
 const axiosInst = axios.create({
+	withCredentials: true,
 	baseURL: `${import.meta.env.VITE_BASE_URL}`,
 	timeout: `${import.meta.env.VITE_REQUEST_TIMEOUT}`,
 	// 请求头
 	headers: {
 		"Content-Type": "application/json;charset=UTF-8",
 	},
-	withCredentials: true,
 });
 
 
 //2. 请求拦截器
-axiosInst.interceptors.request.use(cfg => {
+axiosInst.interceptors.request.use(config => {
 		let token = sessionStorage.getItem(config.Authorization)
-		if (token) {
-			cfg.headers.Authorization = `Bearer ${token}`
-		}
-		return cfg;
+		//if (token) {
+			config.headers.Authorization = `Bearer ${token}`
+		//}
+		const cookie = 'your_cookie_value';
+		config.headers['Cookie'] = cookie;
+		return config;
 	},
 	error => {
 		Promise.reject(error);
