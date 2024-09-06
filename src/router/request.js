@@ -17,14 +17,12 @@ const axiosInst = axios.create({
 
 
 //2. 请求拦截器
-axiosInst.interceptors.request.use(config => {
+axiosInst.interceptors.request.use(cfg => {
 		let token = sessionStorage.getItem(config.Authorization)
-		//if (token) {
-			config.headers.Authorization = `Bearer ${token}`
-		//}
-		const cookie = 'your_cookie_value';
-		config.headers['Cookie'] = cookie;
-		return config;
+		if (token) {
+			cfg.headers.Authorization = `Bearer ${token}`
+		}
+		return cfg;
 	},
 	error => {
 		Promise.reject(error);

@@ -2,6 +2,7 @@ import authRoutes from '@/view/auth/routes'
 import dashboardRoutes from '@/view/dashboard/routes'
 import projectsRoutes from '@/view/projects/routes'
 import usersRoutes from '@/view/users/routes'
+import methodRoutes from '@/view/method/routes'
 
 import NotFoundPage from '@/view/error/NotFound.vue'
 import HomePage from "@/view/home/Home.vue";
@@ -20,6 +21,7 @@ const routes = [
 			...dashboardRoutes,
 			...projectsRoutes,
 			...usersRoutes,
+			...methodRoutes
 		],
 	}, {
 		name: 'Login',

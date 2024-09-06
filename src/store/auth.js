@@ -1,5 +1,5 @@
 import {defineStore} from "pinia";
-import {doLogin, doLogout, setHttpToken, removeHttpToken} from "@/api/auth.js";
+import {doLogin, doLogout, setHttpToken, removeHttpToken} from "@/api/auth";
 import config from "@/config/index.js";
 
 export const useAuthStore = defineStore('auth', {
