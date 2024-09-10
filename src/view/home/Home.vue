@@ -38,7 +38,7 @@ function changeMenuStatus(status) {
 }
 
 .el-main {
+	display: block;
 	padding: 0;
-	height: 100%;
 }
 </style>

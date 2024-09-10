@@ -3,7 +3,7 @@ import MethodListPage from './MethodList.vue'
 export default [
 	{
 		name: 'MethodList',
-		path: '/project-list',
+		path: '/method-list',
 		component: MethodListPage,
 		meta: {
 			title: '方法',

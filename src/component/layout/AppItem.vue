@@ -22,7 +22,7 @@ const props = defineProps({
 })
 
 const goToApp = (appId) => {
-	router.push({name: 'MethodList', query: {'appId': appId}})
+	router.push({name: 'MethodList', query: {'appId': appId}, replace: true})
 }
 </script>
 
