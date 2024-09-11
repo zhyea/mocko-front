@@ -2,7 +2,7 @@
 	<div class="table-container">
 
 		<div class="table-header">
-			<el-form :model="keywordForm" label-width="auto" :inline="true">
+			<el-form :model="keywordForm" label-width="auto" label-suffix=":" :inline="true">
 				<el-form-item label="关键字">
 					<el-input v-model="keywordForm.keyword"/>
 				</el-form-item>
@@ -19,13 +19,13 @@
 
 			<el-table :data="methodListData" border style="width: 100%">
 				<el-table-column type="index" width="45"/>
-				<el-table-column show-overflow-tooltip width=300 prop="typeFullName" label="类名"/>
+				<el-table-column show-overflow-tooltip width=270 prop="typeFullName" label="类名"/>
 				<el-table-column show-overflow-tooltip width=120 prop="methodName" label="方法名"/>
-				<el-table-column show-overflow-tooltip prop="methodAlias" label="方法描述"/>
-				<el-table-column show-overflow-tooltip prop="responseType" label="返回类型"/>
-				<el-table-column show-overflow-tooltip width=163 align="center" prop="lastRequestTime"
+				<el-table-column show-overflow-tooltip width=180 prop="methodAlias" label="方法描述"/>
+				<el-table-column show-overflow-tooltip width=270 prop="responseType" label="返回类型"/>
+				<el-table-column show-overflow-tooltip width=180 align="center" prop="lastRequestTime"
 				                 label="上次调用时间"/>
-				<el-table-column label="操作" align="center" width=136>
+				<el-table-column label="操作" align="center" fixed="right" width=136>
 					<template #default="scope">
 						<el-button type="success" size="small" @click="handleEdit(scope.row)">
 							编辑
@@ -49,7 +49,7 @@
 		</div>
 	</div>
 
-	<method-item ref="methodDrawerRef" />
+	<method-item ref="methodDrawerRef"/>
 </template>
 
 <script setup>
@@ -88,7 +88,7 @@ const methodDrawerRef = ref()
 
 
 // 加载方法数据
-function loadMethodsData() {
+function loadMethodListData() {
 	let keyword = keywordForm.value.keyword
 	let appId = route.query.appId
 	let pageNo = pageData.value.pageNo
@@ -105,24 +105,24 @@ function loadMethodsData() {
 
 
 onMounted(() => {
-	loadMethodsData()
+	loadMethodListData()
 })
 
 
-
-function openMethodDrawer(){
+function openMethodDrawer() {
 	methodDrawerRef.value.openMethodDrawer()
 }
 
 
 const handlePageChange = async (val) => {
 	console.log(val)
-	loadMethodsData()
+	loadMethodListData()
 }
 
 
 function handleEdit(record) {
 	console.log(record)
+	methodDrawerRef.value.openMethodDrawer(record.methodId)
 }
 
 
@@ -132,7 +132,7 @@ function handleDelete(record) {
 
 
 function queryMethods() {
-	console.log(keywordForm.value)
+	loadMethodListData()
 }
 
 

@@ -5,9 +5,17 @@
 			<el-form status-icon
 			         ref="methodFormRef"
 			         :model="methodForm"
+			         label-position="right"
+			         label-width="auto"
+			         label-suffix=":"
 			         :rules="methodFormRules" label-with="0" class="method-form">
 
-				<el-form-item label="方法名">
+				<el-form-item label="类名" prop="typeName">
+					<el-input readonly
+					          v-model="methodForm.typeName"/>
+				</el-form-item>
+
+				<el-form-item label="方法名" prop="methodName">
 					<el-input readonly
 					          v-model="methodForm.methodName"/>
 				</el-form-item>
@@ -17,12 +25,12 @@
 					<el-input v-model="methodForm.methodAlias"/>
 				</el-form-item>
 
-				<el-form-item label="返回值类型">
+				<el-form-item label="返回值类型" prop="responseType">
 					<el-input readonly
 					          v-model="methodForm.responseType"/>
 				</el-form-item>
 
-				<el-form-item>
+				<el-form-item class="submit-btn">
 					<el-button type="primary" @click="submitMethodMaintain">提交</el-button>
 				</el-form-item>
 			</el-form>
@@ -33,20 +41,16 @@
 <script setup>
 
 // do not use same name with ref
-import {ref, onMounted} from "vue";
+import {ref} from "vue";
 import {getMethod, modifyMethodInfo} from "@/api/method.js";
 import {ElMessageBox} from "element-plus";
-
-// 定义属性信息
-const props = defineProps({
-	methodId: String
-})
 
 
 const methodDrawer = ref(false)
 
-const openMethodDrawer = () => {
+const openMethodDrawer = (methodId) => {
 	methodDrawer.value = true
+	loadMethodInfo(methodId)
 }
 
 
@@ -57,6 +61,7 @@ const methodForm = ref({
 	methodName: '',
 	methodAlias: '',
 	responseType: '',
+	typeName: '',
 })
 
 
@@ -76,18 +81,14 @@ const methodFormRules = {
 };
 
 
-onMounted(() => {
-	loadMethodInfo()
-})
-
-
 /**
  * 加载方法数据到表单
  */
-function loadMethodInfo() {
-	getMethod(route.query.methodId).then(
+function loadMethodInfo(methodId) {
+	console.log("load method info", methodId)
+	getMethod(methodId).then(
 		response => {
-			form.value = response.data
+			methodForm.value = response.data
 		}
 	)
 }
@@ -124,5 +125,13 @@ function submitMethodMaintain() {
 </script>
 
 <style scoped lang="less">
+.method-form {
+	width: 100%;
+}
 
+.submit-btn .el-form-item__content {
+	text-align: right !important;
+	display: flex;
+	justify-content: flex-end;
+}
 </style>
