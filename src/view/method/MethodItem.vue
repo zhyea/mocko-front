@@ -1,78 +1,109 @@
 <template>
-	<el-container class="method-container">
-		<!--表单信息-->
-		<el-form status-icon
-		         :model="form"
-		         ref="formRef"
-		         :rules="methodFormRules" label-with="0" class="method-form">
+	<el-drawer title="方法" v-model="methodDrawer" :with-header=false>
+		<el-container class="method-container">
+			<!--表单信息-->
+			<el-form status-icon
+			         ref="methodFormRef"
+			         :model="methodForm"
+			         :rules="methodFormRules" label-with="0" class="method-form">
 
-			<el-form-item label="">
-				<el-input placeholder="方法名"
-				          readonly
-				          v-model="form.methodName"/>
-			</el-form-item>
+				<el-form-item label="方法名">
+					<el-input readonly
+					          v-model="methodForm.methodName"/>
+				</el-form-item>
 
 
-			<el-form-item label="" prop="methodAlias">
-				<el-input placeholder="方法别名"
-				          v-model="form.methodAlias"/>
-			</el-form-item>
+				<el-form-item label="方法描述" prop="methodAlias">
+					<el-input v-model="methodForm.methodAlias"/>
+				</el-form-item>
 
-			<el-form-item label="">
-				<el-input placeholder="返回值类型"
-				          readonly
-				          v-model="form.responseType"/>
-			</el-form-item>
+				<el-form-item label="返回值类型">
+					<el-input readonly
+					          v-model="methodForm.responseType"/>
+				</el-form-item>
 
-			<el-form-item>
-				<el-button type="primary" @click="onSubmit">提交</el-button>
-			</el-form-item>
-		</el-form>
-	</el-container>
+				<el-form-item>
+					<el-button type="primary" @click="submitMethodMaintain">提交</el-button>
+				</el-form-item>
+			</el-form>
+		</el-container>
+	</el-drawer>
 </template>
 
 <script setup>
 
 // do not use same name with ref
-import {ref} from "vue";
-import {changMethodResponse, getMethod} from "@/api/method.js";
-import {useRoute} from 'vue-router';
-import {ElMessage, ElMessageBox} from "element-plus";
+import {ref, onMounted} from "vue";
+import {getMethod, modifyMethodInfo} from "@/api/method.js";
+import {ElMessageBox} from "element-plus";
 
-const route = useRoute();
+// 定义属性信息
+const props = defineProps({
+	methodId: String
+})
 
-const form = ref({
+
+const methodDrawer = ref(false)
+
+const openMethodDrawer = () => {
+	methodDrawer.value = true
+}
+
+
+defineExpose({openMethodDrawer})
+
+// 方法表单
+const methodForm = ref({
 	methodName: '',
 	methodAlias: '',
 	responseType: '',
 })
 
 
-getMethod(route.query.methodId).then(
-	response => {
-		form.value = response.data
-	}
-)
+const methodFormRef = ref()
 
 
-const formRef = ref(null)
+const methodFormRules = {
+	methodName: [
+		{required: true, message: '请输入方法名', trigger: 'blur'},
+	],
+	methodAlias: [
+		{required: true, message: '请输入方法描述', trigger: 'blur'},
+	],
+	responseType: [
+		{required: true, message: '请输入响应值类型', trigger: 'blur'},
+	],
+};
 
-function onSubmit() {
 
-	formRef.value.validate(
-		(valid) => {
-			if (valid) {
-				const formData = {...form.value}
-				doSubmit(formData)
-			}
+onMounted(() => {
+	loadMethodInfo()
+})
+
+
+/**
+ * 加载方法数据到表单
+ */
+function loadMethodInfo() {
+	getMethod(route.query.methodId).then(
+		response => {
+			form.value = response.data
 		}
 	)
 }
 
 
-function doSubmit(formData) {
-	changMethodResponse(formData).then(
-		response => {
+/**
+ * 提交方法维护信息
+ */
+function submitMethodMaintain() {
+
+	methodFormRef.value.validate((valid) => {
+		if (!valid) {
+			return
+		}
+		const formData = {...methodForm.value}
+		modifyMethodInfo(formData).then(response => {
 			if (response.data) {
 				ElMessageBox({
 					title: '提示',
@@ -85,8 +116,9 @@ function doSubmit(formData) {
 					message: response.msg,
 				})
 			}
-		}
-	)
+		})
+		// end modify request handle
+	})
 }
 
 </script>

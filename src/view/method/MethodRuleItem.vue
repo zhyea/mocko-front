@@ -35,7 +35,7 @@
 
 // do not use same name with ref
 import {ref} from "vue";
-import {changMethodResponse, getMethod} from "@/api/method.js";
+import {modifyMethodInfo, getMethod} from "@/api/method.js";
 import {useRoute} from 'vue-router';
 import {ElMessage, ElMessageBox} from "element-plus";
 
@@ -71,7 +71,7 @@ function onSubmit() {
 
 
 function doSubmit(formData) {
-	changMethodResponse(formData).then(
+	modifyMethodInfo(formData).then(
 		response => {
 			if (response.data) {
 				ElMessageBox({

@@ -93,6 +93,10 @@ button:focus-visible {
 	background-color: transparent !important;
 }
 
+button {
+	border-radius: 2px !important;
+}
+
 @media (prefers-color-scheme: light) {
 	:root {
 		color: #213547;

@@ -14,11 +14,11 @@
 
 		<div class="table-body">
 			<div class="table-button">
-				<el-button type="primary" @click="queryMethods">新增方法</el-button>
+				<el-button type="primary" @click="openMethodDrawer">新增方法</el-button>
 			</div>
 
 			<el-table :data="methodListData" border style="width: 100%">
-				<el-table-column type="index" width="36"/>
+				<el-table-column type="index" width="45"/>
 				<el-table-column show-overflow-tooltip width=300 prop="typeFullName" label="类名"/>
 				<el-table-column show-overflow-tooltip width=120 prop="methodName" label="方法名"/>
 				<el-table-column show-overflow-tooltip prop="methodAlias" label="方法描述"/>
@@ -48,13 +48,15 @@
 			               layout="prev, pager, next"/>
 		</div>
 	</div>
+
+	<method-item ref="methodDrawerRef" />
 </template>
 
 <script setup>
 import {ref, onMounted, onBeforeUnmount} from 'vue'
-import {Search} from '@element-plus/icons-vue'
 import {findMethodsInPage} from '@/api/type'
 import {useRouter, useRoute} from 'vue-router';
+import MethodItem from "@/view/method/MethodItem.vue";
 
 const route = useRoute();
 
@@ -81,6 +83,10 @@ const pageData = ref({
 const methodListData = ref([])
 
 
+// 方法信息抽屉
+const methodDrawerRef = ref()
+
+
 // 加载方法数据
 function loadMethodsData() {
 	let keyword = keywordForm.value.keyword
@@ -101,6 +107,12 @@ function loadMethodsData() {
 onMounted(() => {
 	loadMethodsData()
 })
+
+
+
+function openMethodDrawer(){
+	methodDrawerRef.value.openMethodDrawer()
+}
 
 
 const handlePageChange = async (val) => {
@@ -146,17 +158,13 @@ function queryMethods() {
 	margin-bottom: 9px;
 }
 
-.table-header{
+.table-header {
 	padding-top: 24px;
 }
 
 
 .table-button {
 	padding-bottom: 9px;
-}
-
-button {
-	border-radius: 2px;
 }
 
 </style>
