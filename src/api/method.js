@@ -21,3 +21,9 @@ export function getMethod(methodId) {
 export function modifyMethodInfo(methodData) {
 	return request.post('/admin/method/change-response', methodData);
 }
+
+
+
+export function maintainMethodResponseRule(ruleData){
+
+}

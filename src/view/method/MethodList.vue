@@ -14,15 +14,15 @@
 
 		<div class="table-body">
 			<div class="table-button">
-				<el-button type="primary" @click="openMethodDrawer">新增方法</el-button>
+				<el-button type="primary">暂时留着</el-button>
 			</div>
 
 			<el-table :data="methodListData" border style="width: 100%">
-				<el-table-column type="index" width="45"/>
-				<el-table-column show-overflow-tooltip width=270 prop="typeFullName" label="类名"/>
-				<el-table-column show-overflow-tooltip width=120 prop="methodName" label="方法名"/>
-				<el-table-column show-overflow-tooltip width=180 prop="methodAlias" label="方法描述"/>
-				<el-table-column show-overflow-tooltip width=270 prop="responseType" label="返回类型"/>
+				<el-table-column type="index" width="50"/>
+				<el-table-column show-overflow-tooltip min-width=270 prop="typeFullName" label="类名"/>
+				<el-table-column show-overflow-tooltip min-width=120 prop="methodName" label="方法名"/>
+				<el-table-column show-overflow-tooltip min-width=180 prop="methodAlias" label="方法描述"/>
+				<el-table-column show-overflow-tooltip min-width=270 prop="responseType" label="返回类型"/>
 				<el-table-column show-overflow-tooltip width=180 align="center" prop="lastRequestTime"
 				                 label="上次调用时间"/>
 				<el-table-column label="操作" align="center" fixed="right" width=136>
@@ -53,9 +53,9 @@
 </template>
 
 <script setup>
-import {ref, onMounted, onBeforeUnmount} from 'vue'
+import {ref, onMounted} from 'vue'
 import {findMethodsInPage} from '@/api/type'
-import {useRouter, useRoute} from 'vue-router';
+import {useRoute} from 'vue-router';
 import MethodItem from "@/view/method/MethodItem.vue";
 
 const route = useRoute();
@@ -121,7 +121,6 @@ const handlePageChange = async (val) => {
 
 
 function handleEdit(record) {
-	console.log(record)
 	methodDrawerRef.value.openMethodDrawer(record.methodId)
 }
 

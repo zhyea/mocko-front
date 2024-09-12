@@ -1,5 +1,5 @@
 <template>
-	<el-drawer title="方法" v-model="methodDrawer" :with-header=false>
+	<el-drawer title="方法" v-model="methodDrawer" :with-header=false destroy-on-close size="50%">
 		<el-container class="method-container">
 			<!--表单信息-->
 			<el-form status-icon
@@ -10,14 +10,16 @@
 			         label-suffix=":"
 			         :rules="methodFormRules" label-with="0" class="method-form">
 
+				<el-form-item prop="methodId">
+					<el-input type="hidden" v-model="methodForm.methodId"/>
+				</el-form-item>
+
 				<el-form-item label="类名" prop="typeName">
-					<el-input readonly
-					          v-model="methodForm.typeName"/>
+					<el-input readonly v-model="methodForm.typeName"/>
 				</el-form-item>
 
 				<el-form-item label="方法名" prop="methodName">
-					<el-input readonly
-					          v-model="methodForm.methodName"/>
+					<el-input readonly v-model="methodForm.methodName"/>
 				</el-form-item>
 
 
@@ -26,8 +28,7 @@
 				</el-form-item>
 
 				<el-form-item label="返回值类型" prop="responseType">
-					<el-input readonly
-					          v-model="methodForm.responseType"/>
+					<el-input readonly v-model="methodForm.responseType"/>
 				</el-form-item>
 
 				<el-form-item class="submit-btn">
@@ -56,8 +57,10 @@ const openMethodDrawer = (methodId) => {
 
 defineExpose({openMethodDrawer})
 
+
 // 方法表单
 const methodForm = ref({
+	methodId: '',
 	methodName: '',
 	methodAlias: '',
 	responseType: '',
@@ -85,7 +88,9 @@ const methodFormRules = {
  * 加载方法数据到表单
  */
 function loadMethodInfo(methodId) {
-	console.log("load method info", methodId)
+	if (methodFormRef.value) {
+		methodFormRef.value.resetFields();
+	}
 	getMethod(methodId).then(
 		response => {
 			methodForm.value = response.data
