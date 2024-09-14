@@ -19,7 +19,7 @@ export function getMethod(methodId) {
  * @param  methodData 修改方法信息
  */
 export function modifyMethodInfo(methodData) {
-	return request.post('/admin/method/change-response', methodData);
+	return request.post('/admin/method/modify', methodData);
 }
 
 

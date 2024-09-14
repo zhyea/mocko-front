@@ -32,7 +32,7 @@
 				</el-form-item>
 
 				<el-form-item class="submit-btn">
-					<el-button type="primary" @click="submitMethodMaintain">提交</el-button>
+					<el-button type="primary" @click="submitMethodMaintain">保存方法基础信息</el-button>
 				</el-form-item>
 			</el-form>
 		</el-container>
@@ -44,7 +44,7 @@
 // do not use same name with ref
 import {ref} from "vue";
 import {getMethod, modifyMethodInfo} from "@/api/method.js";
-import {ElMessageBox} from "element-plus";
+import {ElMessage, ElMessageBox} from "element-plus";
 
 
 const methodDrawer = ref(false)
@@ -111,10 +111,9 @@ function submitMethodMaintain() {
 		const formData = {...methodForm.value}
 		modifyMethodInfo(formData).then(response => {
 			if (response.data) {
-				ElMessageBox({
-					title: '提示',
-					message: '保存成功.',
-					type: 'success',
+				ElMessage.success({
+					message: '保存成功',
+					duration: 1500,
 				})
 			} else {
 				ElMessageBox({

@@ -2,9 +2,11 @@
 	<div class="table-container">
 
 		<div class="table-header">
-			<el-form :model="keywordForm" label-width="auto" label-suffix=":" :inline="true">
+			<el-form :model="keywordForm" label-width="auto" label-suffix=":" :inline="true"
+			         @submit.native.prevent
+			>
 				<el-form-item label="关键字">
-					<el-input v-model="keywordForm.keyword"/>
+					<el-input v-model="keywordForm.keyword" @keyup.enter.native="queryMethods"/>
 				</el-form-item>
 				<el-form-item>
 					<el-button type="primary" @click="queryMethods">查询</el-button>
@@ -19,7 +21,7 @@
 
 			<el-table :data="methodListData" border style="width: 100%">
 				<el-table-column type="index" width="50"/>
-				<el-table-column show-overflow-tooltip min-width=270 prop="typeFullName" label="类名"/>
+				<el-table-column show-overflow-tooltip min-width=270 prop="typeName" label="类名"/>
 				<el-table-column show-overflow-tooltip min-width=120 prop="methodName" label="方法名"/>
 				<el-table-column show-overflow-tooltip min-width=180 prop="methodAlias" label="方法描述"/>
 				<el-table-column show-overflow-tooltip min-width=270 prop="responseType" label="返回类型"/>
