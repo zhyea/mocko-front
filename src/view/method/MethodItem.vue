@@ -84,6 +84,9 @@ const methodFormRules = {
 };
 
 
+
+let emit = defineEmits(['modifyMethod'])
+
 /**
  * 加载方法数据到表单
  */
@@ -111,6 +114,8 @@ function submitMethodMaintain() {
 		const formData = {...methodForm.value}
 		modifyMethodInfo(formData).then(response => {
 			if (response.data) {
+				emit('modifyMethod', formData)
+
 				ElMessage.success({
 					message: '保存成功',
 					duration: 1500,
