@@ -1,5 +1,8 @@
 <template>
-	<el-drawer title="方法" v-model="methodDrawer" :with-header=false destroy-on-close size="50%">
+	<el-drawer title="编辑方法信息"
+	           v-model="methodDrawer"
+	           :with-header=true size="50%">
+
 		<el-container class="method-container">
 			<!--表单信息-->
 			<el-form status-icon
@@ -8,7 +11,7 @@
 			         label-position="right"
 			         label-width="auto"
 			         label-suffix=":"
-			         :rules="methodFormRules" label-with="0" class="method-form">
+			         :rules="methodFormRules" class="method-form">
 
 				<el-form-item prop="methodId">
 					<el-input type="hidden" v-model="methodForm.methodId"/>
@@ -33,9 +36,11 @@
 
 				<el-form-item class="submit-btn">
 					<el-button type="primary" @click="submitMethodMaintain">保存方法基础信息</el-button>
+					<el-button type="success" @click="submitMethodMaintain">新增方法规则</el-button>
 				</el-form-item>
 			</el-form>
 		</el-container>
+
 	</el-drawer>
 </template>
 
@@ -84,8 +89,7 @@ const methodFormRules = {
 };
 
 
-
-let emit = defineEmits(['modifyMethod'])
+let emit = defineEmits(['afterMethodModify'])
 
 /**
  * 加载方法数据到表单
@@ -114,7 +118,7 @@ function submitMethodMaintain() {
 		const formData = {...methodForm.value}
 		modifyMethodInfo(formData).then(response => {
 			if (response.data) {
-				emit('modifyMethod', formData)
+				emit('afterMethodModify', formData)
 
 				ElMessage.success({
 					message: '保存成功',

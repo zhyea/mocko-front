@@ -51,7 +51,7 @@
 		</div>
 	</div>
 
-	<method-item ref="methodDrawerRef"/>
+	<method-item @after-method-modify="loadMethodListData" ref="methodDrawerRef"/>
 </template>
 
 <script setup>

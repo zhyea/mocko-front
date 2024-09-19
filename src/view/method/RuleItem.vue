@@ -10,15 +10,13 @@
 				<el-input type="hidden" v-model="ruleForm.methodId"/>
 			</el-form-item>
 
-			<el-form-item prop="ruleId">
+			<el-form-item prop="ruleId" v-if="ruleForm.ruleId">
 				<el-input type="hidden" v-model="ruleForm.ruleId"/>
 			</el-form-item>
-
 
 			<el-form-item label="规则名称" prop="ruleName">
 				<el-input v-model="ruleForm.ruleName"/>
 			</el-form-item>
-
 
 			<el-form-item label="规则表达式" prop="ruleExp">
 				<el-input v-model="ruleForm.ruleExp"/>
@@ -26,6 +24,14 @@
 
 			<el-form-item label="返回值" prop="response">
 				<el-input v-model="ruleForm.response"/>
+			</el-form-item>
+
+			<el-form-item label="是否开启" prop="switchFlag">
+				<el-input v-model="ruleForm.switchFlag"/>
+			</el-form-item>
+
+			<el-form-item label="上次调用时间" prop="lastRequestTime" v-if="ruleForm.ruleId">
+				<el-input v-model="ruleForm.lastRequestTime"/>
 			</el-form-item>
 
 			<el-form-item>
@@ -51,6 +57,8 @@ const ruleForm = ref({
 	ruleName: '',
 	ruleExp: '',
 	response: '',
+	switchFlag: '',
+	lastRequestTime: '',
 })
 
 
