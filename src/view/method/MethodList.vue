@@ -111,11 +111,6 @@ onMounted(() => {
 })
 
 
-function openMethodDrawer() {
-	methodDrawerRef.value.openMethodDrawer()
-}
-
-
 const handlePageChange = async (val) => {
 	console.log(val)
 	loadMethodListData()

@@ -40,7 +40,7 @@
 import {ref} from 'vue'
 
 import {useRoute} from 'vue-router';
-import {getMethod, modifyMethodInfo} from "@/api/method.js";
+import {getMethod, modifyMethod} from "@/api/method.js";
 import {ElMessage, ElMessageBox} from "element-plus";
 
 const route = useRoute();
@@ -77,7 +77,7 @@ function onSubmit() {
 
 
 function doSubmit(formData) {
-	modifyMethodInfo(formData).then(
+	modifyMethod(formData).then(
 		response => {
 			if (response.data) {
 				ElMessageBox({

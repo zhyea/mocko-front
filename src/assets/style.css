@@ -93,6 +93,12 @@ button:focus-visible {
 	background-color: transparent !important;
 }
 
+
+.el-drawer__body {
+	border-top: 1px dashed #dddddd !important;
+}
+
+
 button {
 	border-radius: 2px !important;
 }
